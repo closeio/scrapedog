@@ -19,9 +19,8 @@ app = Flask(__name__)
 # debug
 dbg = app.logger.debug
 
-def scrape(url):
+def scrape(url, callback=None):
     # callback for jsonp
-    callback = request.args.get('callback', '')
         
     r = requests.get(url)
     html = BeautifulSoup(r.text)
@@ -47,7 +46,7 @@ def scrape(url):
 def main():
     url = request.args.get('url', '')
     if url:
-	return scrape(url)
+	return scrape(url, request.args.get('callback', ''))
     else:
         return '<pre>Woah there, we need a URL.\nExample: ' + request.url_root + '?url=http://www.google.com </pre>'
 
