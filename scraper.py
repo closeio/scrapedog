@@ -21,6 +21,26 @@ class BasicMixin():
         }
 
 
+def get_all_parents(el):
+    # starting with root
+    parents = []
+    while el.parent:
+        el = el.parent
+        parents.insert(0, el)
+    return parents
+
+
+def closest_common_parent(a, b):
+    # from root down to nearest
+    parents_a = get_all_parents(a)
+    parents_b = get_all_parents(b)
+    common = []
+    for a, b in zip(parents_a, parents_b):
+        if a == b:
+            common.append(a)
+    print common[-1]
+
+
 class ContactMixin():
     def get_contact_content(self):
 
@@ -39,9 +59,18 @@ class ContactMixin():
                     return True
         phone_tags = self.soup.find_all(text=find_phones)
 
+
         # emails
         email_tags = self.soup.find_all(text=email_re)
         emails = [unicode(x.string) for x in email_tags] or []
+
+        # find common parent between phones/emails
+        #for x in get_all_parents(email_tags[1]):
+        """
+        a = phone_tags[11]
+        b = email_tags[5]
+        print closest_common_parent(a, b)
+        """
 
         return {
             'contacts': [],
