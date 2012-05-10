@@ -49,6 +49,7 @@ class ContactMixin():
             'emails': emails,
             'phones': phones,
             'phone_tags': phone_tags,
+            'email_tags': email_tags,
         }
 
 
