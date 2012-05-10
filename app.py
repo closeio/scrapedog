@@ -7,6 +7,9 @@ from flask import Flask
 from flask import Markup
 from flask import request
 
+import bs4
+from bs4 import BeautifulSoup
+
 import requests
 
 app = Flask(__name__)
@@ -15,8 +18,22 @@ app = Flask(__name__)
 def main():
     url = request.args.get('url', '')
     if url:
+        # callback for jsonp
+        callback = request.args.get('callback', '')
+        
         r = requests.get(url)
-        return 'abc' 
+        html = BeautifulSoup(r.text)
+        response = {
+            'url': url,
+            'title': html.title.string,
+            'headers': r.headers,
+            'meta_tags': '' # empty for now
+        }
+        
+        if callback:
+            return '%s(%s)' % (callback, json.dumps(response)) 
+        else:
+            return json.dumps(response)
     else:
         return 'Hello World!'
 
