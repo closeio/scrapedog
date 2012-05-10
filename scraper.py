@@ -87,7 +87,13 @@ class ScrapeDog(BasicMixin, ContactMixin):
     def __init__(self, *args, **kwargs):
         self.url = kwargs.pop('url')
         self.request = requests.get(self.url)
-        self.soup = BeautifulSoup(self.request.text)
+        self.orig_soup = BeautifulSoup(self.request.text)
+
+        # store version of "cleaned up" soup
+        self.soup = self.orig_soup
+        for tag in self.soup.findAll('script'): # remove <script>s
+            tag.extract()
+
         self.text_only = self.soup.get_text()
 
     def get_content(self):
