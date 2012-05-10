@@ -88,6 +88,14 @@ class ContactMixin():
         phone_tags = self.soup.find_all(text=find_phones)
         return (phones, phone_tags)
 
+    def rings_of_closeness(keyable_tag, interesting_tags, max_items_considered = 50):
+        pass
+        """
+        returns = {0:[tag1, tag2], 3:[tag3, tag4, tag5], 7: [tag6]}
+        """
+
+    def build_contact(know_good_node, related_nodes_ordered):
+	pass
 
     def get_contact_content(self):
 
@@ -95,13 +103,10 @@ class ContactMixin():
 
         emails, email_tags = self.find_emails()
         phones, phone_tags = self.find_phones()
-        interesting_tags = set(email_tags + phone_tags)
+        interesting_tags = email_tags + phone_tags
 
-        """
-        a = phone_tags[11]
-        b = email_tags[7]
-        print dist_to_common_parent(a, b)
-        """
+	
+
 
         # group each interesting tag by common parent
         # the same tag can appear in multiple common parents (like their grandparents)
