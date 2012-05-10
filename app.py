@@ -10,6 +10,8 @@ from flask import request
 import bs4
 from bs4 import BeautifulSoup
 
+import re
+
 import requests
 
 app = Flask(__name__)
@@ -35,7 +37,13 @@ def main():
         else:
             return json.dumps(response)
     else:
-        return 'Hello World!'
+        return '<pre>Woah there, we need a URL.\nExample: ' + request.url_root + '?url=http://www.google.com </pre>'
+
+@app.route('/debug')
+def debug():
+    url = request.args.get('url', '')
+    
+
 
 @app.route('/dummy')
 def dummy():
