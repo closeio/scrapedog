@@ -38,19 +38,17 @@ class ContactMixin():
                 if string.find(tag, phone) != -1:
                     return True
         phone_tags = self.soup.find_all(text=find_phones)
-        phone_tags = [unicode(x.parent) for x in phone_tags] or []
 
         # emails
         email_tags = self.soup.find_all(text=email_re)
         emails = [unicode(x.string) for x in email_tags] or []
-        email_tags = [unicode(x.parent) for x in email_tags] or []
 
         return {
             'contacts': [],
             'emails': emails,
-            'email_tags': email_tags,
+            'email_tags': [unicode(x.parent) for x in email_tags] or [],
             'phones': phones,
-            'phone_tags': phone_tags,
+            'phone_tags': [unicode(x.parent) for x in phone_tags] or [],
         }
 
 
