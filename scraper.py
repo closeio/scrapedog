@@ -90,14 +90,14 @@ class ContactMixin():
 
     def rings_of_closeness(self, keyable_tag, interesting_tags, max_items_considered = 50):
         tags_matrix = {}
- 
-	# O(n^2)
+
+        # O(n^2)
         for i_tag_x, tag_x in enumerate(interesting_tags):
             for i_tag_y, tag_y in enumerate(interesting_tags):
                 tags_matrix[(i_tag_x, i_tag_y)] = dist_to_common_parent(tag_x, tag_y)
 
-	L = tags_matrix.values()
-	print tags_matrix
+        L = tags_matrix.values()
+        print tags_matrix
         print len(L)
         print len(interesting_tags)
         print dict([(x, L.count(x)) for x in L])
@@ -107,10 +107,8 @@ class ContactMixin():
         returns = {0:[tag1, tag2], 3:[tag3, tag4, tag5], 7: [tag6]}
         """
 
-
-
     def build_contact(self, parent, list_interesting_children):
-	pass
+        pass
 
     def get_contact_content(self):
 
