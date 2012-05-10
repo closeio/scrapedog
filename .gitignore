@@ -1,6 +1,8 @@
 .DS_Store
 *.py[co]
 venv
+.*.sw[op]
+
 
 # Packages
 *.egg
