@@ -1,7 +1,9 @@
+import collections
 import re
 import requests
 import phonenumbers
 import string
+
 
 from bs4 import BeautifulSoup
 
@@ -29,8 +31,7 @@ def get_all_parents(el):
         parents.insert(0, el)
     return parents
 
-
-def closest_common_parent(a, b):
+def get_common_parents(a, b):
     # from root down to nearest
     parents_a = get_all_parents(a)
     parents_b = get_all_parents(b)
@@ -38,7 +39,33 @@ def closest_common_parent(a, b):
     for a, b in zip(parents_a, parents_b):
         if a == b:
             common.append(a)
-    #print common
+    return common
+
+def closest_common_parent(a, b):
+    return get_common_parents(a, b)[-1]
+
+def dist_to_common_parent(a, b):
+    # find the distance from a to the common parent of a,b
+    parent = closest_common_parent(a, b)
+    return dist_to_parent(a, parent)
+
+def dist_to_parent(el, parent):
+    dist = 0
+    while el.parent != parent:
+        el = el.parent
+        dist += 1
+    return dist
+
+def group_by_common_parent(els):
+    # yahh n^2!
+    return
+    common_parents = collections.defaultdict(set)
+    for a in els:
+        for b in els:
+            for c in get_common_parents(a, b):
+                common_parents[c] = 0
+
+
 
 
 class ContactMixin():
@@ -66,18 +93,23 @@ class ContactMixin():
 
         # find common parent between phones/emails
         #for x in get_all_parents(email_tags[1]):
-        """
         a = phone_tags[11]
-        b = email_tags[5]
-        print closest_common_parent(a, b)
-        """
+        b = email_tags[7]
+        print dist_to_common_parent(a, b)
+
+        interesting_tags = set(email_tags + phone_tags)
+
+        # group each interesting tag by common parent
+        # the same tag can appear in multiple common parents (like their grandparents)
+        contacts = group_by_common_parent(interesting_tags)
 
         return {
-            'contacts': [],
+            'contacts': contacts or [],
             'emails': emails,
             'email_tags': [unicode(x.parent) for x in email_tags] or [],
             'phones': phones,
             'phone_tags': [unicode(x.parent) for x in phone_tags] or [],
+            'interesting_tags': [unicode(x.parent) for x in interesting_tags] or [],
         }
 
 
