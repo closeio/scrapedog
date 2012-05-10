@@ -57,24 +57,25 @@ def dist_to_parent(el, parent):
     return dist
 
 def group_by_common_parent(els):
-    # yahh n^2!
     return
     common_parents = collections.defaultdict(set)
     for a in els:
         for b in els:
             for c in get_common_parents(a, b):
-                common_parents[c] = 0
+                pass
 
 
 
 
 class ContactMixin():
-    def get_contact_content(self):
 
-        # http://www.noah.org/wiki/RegEx_Python#email_regex_pattern
+    def find_emails(self):
         email_re = re.compile('[a-zA-Z0-9+_\-\.]+@[0-9a-zA-Z][.\-0-9a-zA-Z]*.[a-zA-Z]+')
-        url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+        email_tags = self.soup.find_all(text=email_re)
+        emails = [unicode(x.string) for x in email_tags] or []
+        return (emails, email_tags)
 
+    def find_phones(self):
         # get list of all phone numbers found anywhere in page (kept in their original format)
         phones_found = phonenumbers.PhoneNumberMatcher(self.text_only, 'US')
         phones = [x.raw_string for x in phones_found]
@@ -85,19 +86,22 @@ class ContactMixin():
                 if string.find(tag, phone) != -1:
                     return True
         phone_tags = self.soup.find_all(text=find_phones)
+        return (phones, phone_tags)
 
 
-        # emails
-        email_tags = self.soup.find_all(text=email_re)
-        emails = [unicode(x.string) for x in email_tags] or []
+    def get_contact_content(self):
 
-        # find common parent between phones/emails
-        #for x in get_all_parents(email_tags[1]):
+        url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+
+        emails, email_tags = self.find_emails()
+        phones, phone_tags = self.find_phones()
+        interesting_tags = set(email_tags + phone_tags)
+
+        """
         a = phone_tags[11]
         b = email_tags[7]
         print dist_to_common_parent(a, b)
-
-        interesting_tags = set(email_tags + phone_tags)
+        """
 
         # group each interesting tag by common parent
         # the same tag can appear in multiple common parents (like their grandparents)
