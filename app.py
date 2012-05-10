@@ -6,36 +6,49 @@ from scraper import ScrapeDog
 
 from flask import Flask, Markup, request, jsonify, make_response, render_template
 
+soup = None
 app = Flask(__name__)
 
 # debug
 dbg = app.logger.debug
 
 
-
-def scrape(url, callback=None):
+def scrape(url):
     scraper = ScrapeDog(url=url)
     response = scraper.get_content()
 
-    if callback:
-        return '%s(%s)' % (callback, json.dumps(response))
-    else:
-        return jsonify(response)
+    return response
 
 
 @app.route('/')
 def main():
     url = request.args.get('url', '')
     if url:
-	return scrape(url, request.args.get('callback', ''))
+        if bool(re.match('.*scrapedog.herokuapp.*',url)):
+            return '&#x0CA0;_&#x0CA0;'
+        else:
+            callback = request.args.get('callback', '')
+            response = scrape(url)
+
+            if callback:
+                return '%s(%s)' % (callback, json.dumps(response))
+            else:
+                return jsonify(response)
+
     else:
         return '<pre>Woah there, we need a URL.\nExample: ' + request.url_root + '?url=http://www.google.com </pre>'
 
 
 @app.route('/debug')
 def debug():
+    global soup
+
     url = request.args.get('url', '')
 
+    output = scrape(url)
+    nodes_numbers = soup.find_all(text=re.compile('(\d{3}\D{1,7}){2}\d{3}'))
+
+    return jsonify(output)
 
 @app.route('/dummy')
 def dummy():
