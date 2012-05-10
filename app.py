@@ -1,19 +1,14 @@
 import os
 import logging
 import json
+import re
+import requests
 
-import flask
-from flask import Flask
-from flask import Markup
-from flask import request
-from flask import make_response, render_template
+from flask import Flask, Markup, request, jsonify, make_response, render_template
 
 import bs4
 from bs4 import BeautifulSoup
 
-import re
-
-import requests
 
 app = Flask(__name__)
 
@@ -23,26 +18,26 @@ dbg = app.logger.debug
 def scrape(url):
     # callback for jsonp
     callback = request.args.get('callback', '')
-        
+
     r = requests.get(url)
     html = BeautifulSoup(r.text)
-        
+
     meta_tags = []
     meta_tags_bs = html.find_all('meta')
     for meta in meta_tags_bs:
         meta_tags.append(meta.attrs)
-        
+
     response = {
         'url': url,
         'title': html.title.string,
         'headers': r.headers,
         'meta_tags': meta_tags
     }
-        
+
     if callback:
-        return '%s(%s)' % (callback, json.dumps(response)) 
+        return '%s(%s)' % (callback, json.dumps(response))
     else:
-        return json.dumps(response)
+        return jsonify(response)
 
 @app.route('/')
 def main():
@@ -55,7 +50,7 @@ def main():
 @app.route('/debug')
 def debug():
     url = request.args.get('url', '')
-    
+
 
 
 @app.route('/dummy')
@@ -63,7 +58,7 @@ def dummy():
     obj = {'url': 'http://www.google.com/',
            'title': 'Google',
            'http_headers': {'Content-Type': 'text/html',
-                            'Status': 200 
+                            'Status': 200
                             },
            'meta_tags': {'description': 'The homepage of the internet.'}
     }
