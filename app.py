@@ -1,6 +1,7 @@
 import os
 import logging
 import json
+import re
 
 from scraper import ScrapeDog
 
