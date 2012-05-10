@@ -16,6 +16,9 @@ import requests
 
 app = Flask(__name__)
 
+# debug
+dbg = app.logger.debug
+
 @app.route('/')
 def main():
     url = request.args.get('url', '')
@@ -25,11 +28,17 @@ def main():
         
         r = requests.get(url)
         html = BeautifulSoup(r.text)
+        
+        meta_tags = []
+        meta_tags_bs = html.find_all('meta')
+        for meta in meta_tags_bs:
+            meta_tags.append(meta.attrs)
+        
         response = {
             'url': url,
             'title': html.title.string,
             'headers': r.headers,
-            'meta_tags': '' # empty for now
+            'meta_tags': meta_tags
         }
         
         if callback:
