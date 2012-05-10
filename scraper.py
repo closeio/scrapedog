@@ -93,11 +93,20 @@ class ContactMixin():
 
         # find common parent between phones/emails
         #for x in get_all_parents(email_tags[1]):
-        a = phone_tags[11]
-        b = email_tags[7]
-        print dist_to_common_parent(a, b)
 
-        interesting_tags = set(email_tags + phone_tags)
+        http://www.recordlabelresource.com/list.php?catid=43interesting_tags = email_tags + phone_tags
+        tags_matrix = {}
+ 
+	# O(n^2)
+        for i_tag_x, tag_x in enumerate(interesting_tags):
+            for i_tag_y, tag_y in enumerate(interesting_tags):
+                tags_matrix[(i_tag_x, i_tag_y)] = dist_to_common_parent(tag_x, tag_y)
+
+	L = tags_matrix.values()
+	print tags_matrix
+        print len(L)
+        print len(interesting_tags)
+        print dict([(x, L.count(x)) for x in L])
 
         # group each interesting tag by common parent
         # the same tag can appear in multiple common parents (like their grandparents)
