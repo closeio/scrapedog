@@ -1,3 +1,5 @@
+pydot
+pyparsing
 Flask
 mongoengine
 requests
