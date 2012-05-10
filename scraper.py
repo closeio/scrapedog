@@ -42,11 +42,13 @@ class ContactMixin():
 
         # emails
         email_tags = self.soup.find_all(text=email_re)
-        emails = [unicode(x) for x in email_tags] or []
+        emails = [unicode(x.string) for x in email_tags] or []
+        email_tags = [unicode(x.parent) for x in email_tags] or []
 
         return {
             'contacts': [],
             'emails': emails,
+            'email_tags': email_tags,
             'phones': phones,
             'phone_tags': phone_tags,
         }
