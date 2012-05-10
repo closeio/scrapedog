@@ -25,7 +25,7 @@ class ContactMixin():
     def get_contact_content(self):
 
         # http://www.noah.org/wiki/RegEx_Python#email_regex_pattern
-        email_re = re.compile('[a-zA-Z0-9+_\-\.]+@[0-9a-zA-Z][.-0-9a-zA-Z]*.[a-zA-Z]+')
+        email_re = re.compile('[a-zA-Z0-9+_\-\.]+@[0-9a-zA-Z][.\-0-9a-zA-Z]*.[a-zA-Z]+')
         url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
         # get list of all phone numbers found anywhere in page (kept in their original format)
