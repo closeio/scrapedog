@@ -19,6 +19,9 @@ def scrape(url):
     scraper = ScrapeDog(url=url)
     response = scraper.get_content()
 
+    global soup
+    soup = scraper.soup
+
     return response
 
 
