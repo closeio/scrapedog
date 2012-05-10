@@ -38,7 +38,7 @@ def closest_common_parent(a, b):
     for a, b in zip(parents_a, parents_b):
         if a == b:
             common.append(a)
-    print common[-1]
+    #print common
 
 
 class ContactMixin():
