@@ -8,46 +8,59 @@ from flask import Flask, Markup, request, jsonify, make_response, render_templat
 
 from bs4 import BeautifulSoup
 
-
+soup = None
 app = Flask(__name__)
 
 # debug
 dbg = app.logger.debug
 
-def scrape(url, callback=None):
-    # callback for jsonp
+def scrape(url):
     r = requests.get(url)
-    html = BeautifulSoup(r.text)
+    global soup
+    soup = BeautifulSoup(r.text)
 
     meta_tags = []
-    meta_tags_bs = html.find_all('meta')
-    for meta in meta_tags_bs:
+    meta_tags_soup= soup.head.find_all('meta')
+    for meta in meta_tags_soup:
         meta_tags.append(meta.attrs)
 
     response = {
         'url': url,
-        'title': html.title.string,
+        'title': soup.title.string,
         'headers': r.headers,
         'meta_tags': meta_tags
     }
 
-    if callback:
-        return '%s(%s)' % (callback, json.dumps(response))
-    else:
-        return jsonify(response)
+    return response
 
 @app.route('/')
 def main():
     url = request.args.get('url', '')
     if url:
-	return scrape(url, request.args.get('callback', ''))
+        if bool(re.match('.*scrapedog.herokuapp.*',url)):
+            return '&#x0CA0;_&#x0CA0;'
+        else:
+            callback = request.args.get('callback', '')
+            response = scrape(url)
+
+            if callback:
+                return '%s(%s)' % (callback, json.dumps(response))
+            else:
+                return jsonify(response)
+
     else:
         return '<pre>Woah there, we need a URL.\nExample: ' + request.url_root + '?url=http://www.google.com </pre>'
 
 @app.route('/debug')
 def debug():
+    global soup
+
     url = request.args.get('url', '')
 
+    output = scrape(url)
+    nodes_numbers = soup.find_all(text=re.compile('(\d{3}\D{1,7}){2}\d{3}'))
+
+    return jsonify(output)
 
 
 @app.route('/dummy')
