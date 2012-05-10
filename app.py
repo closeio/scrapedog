@@ -19,32 +19,35 @@ app = Flask(__name__)
 # debug
 dbg = app.logger.debug
 
+def scrape(url):
+    # callback for jsonp
+    callback = request.args.get('callback', '')
+        
+    r = requests.get(url)
+    html = BeautifulSoup(r.text)
+        
+    meta_tags = []
+    meta_tags_bs = html.find_all('meta')
+    for meta in meta_tags_bs:
+        meta_tags.append(meta.attrs)
+        
+    response = {
+        'url': url,
+        'title': html.title.string,
+        'headers': r.headers,
+        'meta_tags': meta_tags
+    }
+        
+    if callback:
+        return '%s(%s)' % (callback, json.dumps(response)) 
+    else:
+        return json.dumps(response)
+
 @app.route('/')
 def main():
     url = request.args.get('url', '')
     if url:
-        # callback for jsonp
-        callback = request.args.get('callback', '')
-        
-        r = requests.get(url)
-        html = BeautifulSoup(r.text)
-        
-        meta_tags = []
-        meta_tags_bs = html.find_all('meta')
-        for meta in meta_tags_bs:
-            meta_tags.append(meta.attrs)
-        
-        response = {
-            'url': url,
-            'title': html.title.string,
-            'headers': r.headers,
-            'meta_tags': meta_tags
-        }
-        
-        if callback:
-            return '%s(%s)' % (callback, json.dumps(response)) 
-        else:
-            return json.dumps(response)
+	return scrape(url)
     else:
         return '<pre>Woah there, we need a URL.\nExample: ' + request.url_root + '?url=http://www.google.com </pre>'
 
