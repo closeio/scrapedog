@@ -6,7 +6,6 @@ import requests
 
 from flask import Flask, Markup, request, jsonify, make_response, render_template
 
-import bs4
 from bs4 import BeautifulSoup
 
 
