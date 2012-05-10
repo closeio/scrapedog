@@ -40,16 +40,10 @@ def main():
         }
         
         if callback:
-            data = '%s(%s)' % (callback, json.dumps(response))
             
+            return '%s(%s)' % (callback, json.dumps(response)) 
         else:
-            data = json.dumps(response)
-            
-        resp = make_response(render_template('json.html',
-                                             data=data),
-                             200)
-        resp.headers['content-type'] = 'application/json'
-        return resp
+            return json.dumps(response)
     else:
         return 'Hello World!'
 
