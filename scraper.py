@@ -1,8 +1,10 @@
 import re
 import requests
 import phonenumbers
+import string
 
 from bs4 import BeautifulSoup
+
 
 class BasicMixin():
     def get_basic_content(self):
@@ -25,18 +27,28 @@ class ContactMixin():
         # http://www.noah.org/wiki/RegEx_Python#email_regex_pattern
         email_re = re.compile('[a-zA-Z0-9+_\-\.]+@[0-9a-zA-Z][.-0-9a-zA-Z]*.[a-zA-Z]+')
         url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
-        phonenumber_re = re.compile(phonenumbers.phonenumberutil._VALID_PHONE_NUMBER)
 
-        phone_tags = self.soup.find_all(text=phonenumber_re)
-        phones = [unicode(x) for x in phone_tags] or []
+        # get list of all phone numbers found anywhere in page (kept in their original format)
+        phones_found = phonenumbers.PhoneNumberMatcher(self.text_only, 'US')
+        phones = [x.raw_string for x in phones_found]
 
+        # now find tags those phone numbers are in
+        def find_phones(tag):
+            for phone in phones:
+                if string.find(tag, phone) != -1:
+                    return True
+        phone_tags = self.soup.find_all(text=find_phones)
+        phone_tags = [unicode(x.parent) for x in phone_tags] or []
+
+        # emails
         email_tags = self.soup.find_all(text=email_re)
         emails = [unicode(x) for x in email_tags] or []
 
         return {
             'contacts': [],
             'emails': emails,
-            'phone': phones,
+            'phones': phones,
+            'phone_tags': phone_tags,
         }
 
 
@@ -47,6 +59,7 @@ class ScrapeDog(BasicMixin, ContactMixin):
         self.url = kwargs.pop('url')
         self.request = requests.get(self.url)
         self.soup = BeautifulSoup(self.request.text)
+        self.text_only = self.soup.get_text()
 
     def get_content(self):
         content = self.get_basic_content()
