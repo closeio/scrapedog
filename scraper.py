@@ -1,3 +1,4 @@
+import sys
 import itertools
 import collections
 import re
@@ -6,7 +7,7 @@ import phonenumbers
 import string
 
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 
 
 class BasicMixin():
@@ -18,24 +19,32 @@ class BasicMixin():
 
         return {
             'url': self.url,
-            'title': self.soup.title.string,
-            'headers': self.request.headers,
+            'title': self.soup.title.string if self.soup.title else '',
+            'headers': self.request.headers if self.request else [],
             'meta_tags': meta_tags,
         }
 
-
 def get_all_parents(el):
-    # starting with root
-    parents = []
-    while el.parent:
-        el = el.parent
-        parents.insert(0, el)
-    return parents
+    # from root down to parent of el
+    return list(reversed(list(el.parents)))
+
+def get_all_children(el):
+    # remove blanks
+    lst = []
+    for el in el.children:
+        if hasattr(el, 'name'):
+            lst.append(el)
+    return lst
+
+def root_to_el(el):
+    els = get_all_parents(el)
+    els.append(el)
+    return els
 
 def get_common_parents(a, b):
-    # from root down to nearest
-    parents_a = get_all_parents(a)
-    parents_b = get_all_parents(b)
+    # from root down to nearest common element -- could be one of a or b
+    parents_a = root_to_el(a)
+    parents_b = root_to_el(b)
     common = []
     for a, b in zip(parents_a, parents_b):
         if a == b:
@@ -57,27 +66,49 @@ def dist_to_parent(el, parent):
         dist += 1
     return dist
 
+def print_el(el):
+    if el.get('id'):
+        return '<%s#%s: %s>' % (el.name, el.get('id'), el.string)
+    else:
+        return '<%s: %s>' % (el.name, el.string)
+
 def group_by_common_parent(els):
-    return
     common_parents = collections.defaultdict(set)
     for a in els:
         for b in els:
-            common_parents[closest_common_parent(a, b)].add(a)
-            common_parents[closest_common_parent(a, b)].add(b)
+            if a == b:
+                continue
+            parent = closest_common_parent(a, b)
+            common_parents[parent].add(a)
+            common_parents[parent].add(b)
     return common_parents
 
 
 class ContactMixin():
 
-    def find_emails(self):
+    def find_emails(self, parent=None):
+        # find email addresses as an element's text or in an a.href
+        parent = parent or self.soup
         email_re = re.compile('[a-zA-Z0-9+_\-\.]+@[0-9a-zA-Z][.\-0-9a-zA-Z]*.[a-zA-Z]+')
-        email_tags = self.soup.find_all(text=email_re)
-        emails = [unicode(x.string) for x in email_tags] or []
+        email_tags = parent.find_all(text=email_re) + parent.find_all('a', href=email_re)
+        emails = [email_re.findall(unicode(x.get('href')[len('mailto:'):] if hasattr(x, 'href') else x.string)) for x in email_tags] or []
+        emails = list(itertools.chain(*emails)) # flatten array
         return (emails, email_tags)
 
-    def find_phones(self):
+    def find_urls(self, parent=None):
+        # find full urls as an element's text or in an a.href
+        parent = parent or self.soup
+        url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+        url_tags = parent.find_all(text=url_re) + parent.find_all('a', href=url_re)
+        url_tags = [x for x in url_tags if x != self.soup.contents[0]] # throw out root tag
+        urls = [url_re.findall(unicode(x.get('href') if hasattr(x, 'href') else x.string)) for x in url_tags] or []
+        urls = list(itertools.chain(*urls)) # flatten array
+        return (urls, url_tags)
+
+    def find_phones(self, parent=None):
+        parent = parent or self.soup
         # get list of all phone numbers found anywhere in page (kept in their original format)
-        phones_found = phonenumbers.PhoneNumberMatcher(self.text_only, 'US')
+        phones_found = phonenumbers.PhoneNumberMatcher(parent.get_text(), 'US')
         phones = [x.raw_string for x in phones_found]
 
         # now find tags those phone numbers are in
@@ -85,17 +116,8 @@ class ContactMixin():
             for phone in phones:
                 if string.find(tag, phone) != -1:
                     return True
-        phone_tags = self.soup.find_all(text=find_phones)
+        phone_tags = parent.find_all(text=find_phones)
         return (phones, phone_tags)
-
-
-    def find_urls(self):
-        url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
-        url_tags = self.soup.find_all(text=url_re)
-        url_tags = [x for x in url_tags if x != self.soup.contents[0]] # throw out root tag
-        urls = [url_re.findall(unicode(x.string)) for x in url_tags] or []
-        urls = list(itertools.chain(*urls)) # flatten array
-        return (urls, url_tags)
 
     def rings_of_closeness(self, keyable_tag, interesting_tags, max_items_considered = 50):
         tags_matrix = {}
@@ -112,14 +134,8 @@ class ContactMixin():
         print len(interesting_tags)
         print dict([(x, L.count(x)) for x in L])
         """
-
-        """
         returns = {0:[tag1, tag2], 3:[tag3, tag4, tag5], 7: [tag6]}
-        """
 
-    def build_contact(self, parent, list_interesting_children):
-        pass
-    
     def find_addresses(self):
         #(([a-zA-Z]{2}),?\s+([0-9]{5})(-[0-9]{4}))
         address_re = re.compile('([0-9]{1,5})\s+(.*),?\s+(.*)')
@@ -132,12 +148,23 @@ class ContactMixin():
                 address_temp = address_re.match(soup.string.strip(' \n\t'))
                 if address_temp and len(address_temp.groups()):
                     address.append(soup)
-
         test(self.soup.find('html'), 0)
         return address
 
-    def get_contact_content(self):
+    def build_contact(self, parent, list_interesting_children=None):
+        emails, email_tags = self.find_emails(parent)
+        phones, phone_tags = self.find_phones(parent)
+        urls, url_tags = self.find_urls(parent)
+        return {
+            'emails': emails,
+            'email_tags': [unicode(x.parent) for x in email_tags] or [],
+            'phones': phones,
+            'phone_tags': [unicode(x.parent) for x in phone_tags] or [],
+            'urls': urls,
+            'url_tags': [unicode(x.parent) for x in url_tags] or [],
+        }
 
+    def get_contact_content(self):
 
         emails, email_tags = self.find_emails()
         phones, phone_tags = self.find_phones()
@@ -145,26 +172,33 @@ class ContactMixin():
         interesting_tags = list(set(email_tags + phone_tags + url_tags))
         address = self.find_addresses()
 
-        self.rings_of_closeness(interesting_tags[0], interesting_tags)
+        #self.rings_of_closeness(interesting_tags[0], interesting_tags)
 
-        # find common parent between phones/emails
-        #for x in get_all_parents(email_tags[1]):
-
-        # group each interesting tag by common parent
-        # the same tag can appear in multiple common parents (like their grandparents)
-        contacts = group_by_common_parent(interesting_tags)
-        #print contacts
+        root = []
+        group = sorted(group_by_common_parent(interesting_tags).iteritems())
+        for parent, children in group:
+            """
+            print ''
+            print ''
+            print print_el(parent), len(children)
+            """
+            contacts = []
+            for contact in get_all_children(parent):
+                contact = self.build_contact(contact, children)
+                contacts.append(contact)
+            root.append({print_el(parent): contacts})
 
         return {
-            'address' : address,
-            'contacts': contacts or [],
+            'root': root or [],
+        }
+            #'interesting_tags': [unicode(x.parent) for x in interesting_tags] or [],
+        return {
             'emails': emails,
             'email_tags': [unicode(x.parent) for x in email_tags] or [],
             'phones': phones,
             'phone_tags': [unicode(x.parent) for x in phone_tags] or [],
             'urls': urls,
             'url_tags': [unicode(x.parent) for x in url_tags] or [],
-            'interesting_tags': [unicode(x.parent) for x in interesting_tags] or [],
         }
 
 
@@ -172,9 +206,13 @@ class ContactMixin():
 class ScrapeDog(BasicMixin, ContactMixin):
 
     def __init__(self, *args, **kwargs):
-        self.url = kwargs.pop('url')
-        self.request = requests.get(self.url)
-        self.orig_soup = BeautifulSoup(self.request.text.strip())
+        self.page = kwargs.pop('page', '')
+        self.url = kwargs.pop('url', '')
+        self.request = None
+        if not self.page:
+            self.request = requests.get(self.url)
+            self.page = self.request.text.strip()
+        self.orig_soup = BeautifulSoup(self.page)
 
         # store version of "cleaned up" soup
         self.soup = self.orig_soup
