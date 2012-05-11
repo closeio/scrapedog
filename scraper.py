@@ -5,7 +5,7 @@ import re
 import requests
 import phonenumbers
 import string
-
+from lib.map import GoogleMap
 
 from bs4 import BeautifulSoup, NavigableString
 
@@ -137,9 +137,11 @@ class ContactMixin():
         returns = {0:[tag1, tag2], 3:[tag3, tag4, tag5], 7: [tag6]}
 
     def find_addresses(self):
-        #(([a-zA-Z]{2}),?\s+([0-9]{5})(-[0-9]{4}))
+        citystate_re = re.compile('([a-zA-Z]{2}),?\s+([0-9]{5})')
         address_re = re.compile('([0-9]{1,5})\s+(.*),?\s+(.*)')
-        address = []
+        gm = GoogleMap()
+        address = {}
+        full_address = []
         def test(soup, depth):
             if hasattr(soup, 'children'):
                 for children in soup.children:
@@ -147,9 +149,25 @@ class ContactMixin():
             elif soup.string.strip(' \n\t'):
                 address_temp = address_re.match(soup.string.strip(' \n\t'))
                 if address_temp and len(address_temp.groups()):
-                    address.append(soup)
+                    if gm.check_address(soup.string):
+                        full_address.append(soup)
+                    else:
+                        if address.has_key(depth):
+                            address[depth].append(soup)
+                        else:
+                            address[depth] = [soup]
+                            
+                        citystate_temp = citystate_re.match(soup.string.strip(' \n\t'))                        
+                        if citystate_temp and len(citystate_temp.groups()):
+                            if address.has_key(depth):
+                                address[depth].append(soup)
+                            else:
+                                address[depth] = [soup]
+                                
+        print address
+
         test(self.soup.find('html'), 0)
-        return address
+        return full_address
 
     def build_contact(self, parent, list_interesting_children=None):
         emails, email_tags = self.find_emails(parent)
@@ -176,22 +194,22 @@ class ContactMixin():
         #self.rings_of_closeness(interesting_tags[0], interesting_tags)
 
         root = []
-        group = sorted(group_by_common_parent(interesting_tags).iteritems())
-        for parent, children in group:
-            """
-            print ''
-            print ''
-            print print_el(parent), len(children)
-            """
-            contacts = []
-            for contact in get_all_children(parent):
-                contact = self.build_contact(contact, children)
-                contacts.append(contact)
-            root.append({print_el(parent): contacts})
+#        group = sorted(group_by_common_parent(interesting_tags).iteritems())
+#        for parent, children in group:
+#            """
+#            print ''
+#            print ''
+#            print print_el(parent), len(children)
+#            """
+#            contacts = []
+#            for contact in get_all_children(parent):
+#                contact = self.build_contact(contact, children)
+#                contacts.append(contact)
+#            root.append({print_el(parent): contacts})
 
-        return {
-            'root': root or [],
-        }
+#        return {
+#            'root': root or [],
+#        }
             #'interesting_tags': [unicode(x.parent) for x in interesting_tags] or [],
         return {
             'emails': emails,
@@ -200,6 +218,7 @@ class ContactMixin():
             'phone_tags': [unicode(x.parent) for x in phone_tags] or [],
             'urls': urls,
             'url_tags': [unicode(x.parent) for x in url_tags] or [],
+            'address' : address
         }
 
 
