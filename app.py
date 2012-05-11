@@ -29,7 +29,7 @@ def scrape(url):
 def main():
     url = request.args.get('url', '')
     if url:
-        if bool(re.match('.*scrapedog.herokuapp.*',url)):
+        if bool(re.match(request.host, url)):
             return '&#x0CA0;_&#x0CA0;'
         else:
             callback = request.args.get('callback', '')
