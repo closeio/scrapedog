@@ -145,7 +145,8 @@ class ContactMixin():
         interesting_tags = list(set(email_tags + phone_tags + url_tags))
         address = self.find_addresses()
 
-        self.rings_of_closeness(interesting_tags[0], interesting_tags)
+        if interesting_tags:
+            self.rings_of_closeness(interesting_tags[0], interesting_tags)
 
         # find common parent between phones/emails
         #for x in get_all_parents(email_tags[1]):
