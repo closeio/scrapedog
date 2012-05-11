@@ -1,0 +1,5 @@
+.wrap { padding: 30px; margin: 0 auto; }
+.wrap .url { height: 28px; margin-top: 9px; }
+.input { height: 30px; }
+.leftblock { width: 30%; margin-top: 20px; }
+.midblock iframe { width: 70%; height: 300px; }
