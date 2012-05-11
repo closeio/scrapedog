@@ -1,3 +1,4 @@
+import itertools
 import collections
 import re
 import requests
@@ -90,8 +91,10 @@ class ContactMixin():
     def find_urls(self):
         url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
         url_tags = self.soup.find_all(text=url_re)
-        urls = [unicode(x.string) for x in url_tags] or []
-        return (urls, url_tags)
+        urls = [url_re.findall(unicode(x.string)) for x in url_tags] or []
+        urls = list(itertools.chain(*urls)) # flatten array
+        urls = [x for x in urls if x.find('www.w3.org') == -1]
+        return (urls, [])
 
     def rings_of_closeness(self, keyable_tag, interesting_tags, max_items_considered = 50):
         tags_matrix = {}
