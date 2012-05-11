@@ -72,9 +72,14 @@ class ContactMixin():
     def get_contact_content(self):
 
         # http://www.noah.org/wiki/RegEx_Python#email_regex_pattern
+        #(([a-zA-Z]{2}),?\s+([0-9]{5})(-[0-9]{4}))
+        address_re = re.compile('([0-9]{1,5})\s+(.*),?\s+(.*)')
+        citystate_re = re.compile('([a-zA-Z]{2}),?\s+([0-9]{5})|([a-zA-Z\s]+),?\s+([a-zA-Z]{2})')
         email_re = re.compile('[a-zA-Z0-9+_\-\.]+@[0-9a-zA-Z][.\-0-9a-zA-Z]*.[a-zA-Z]+')
         url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
-
+        
+        print address_re.findall(self.text_only)
+        
         # get list of all phone numbers found anywhere in page (kept in their original format)
         phones_found = phonenumbers.PhoneNumberMatcher(self.text_only, 'US')
         phones = [x.raw_string for x in phones_found]
@@ -85,17 +90,31 @@ class ContactMixin():
                 if string.find(tag, phone) != -1:
                     return True
         phone_tags = self.soup.find_all(text=find_phones)
+        
+        
+        
+        address = []
+        def test(soup, depth):
+            if hasattr(soup, 'children'):
+                for children in soup.children:
+                    test(children, depth + 1)
+            elif soup.string.strip(' \n\t'):
+                address_temp = address_re.match(soup.string.strip(' \n\t'))
+                if address_temp and len(address_temp.groups()):                
+                    address.append(soup)
 
+        test(self.soup.find('html'), 0)
 
         # emails
+        address_tags = self.soup.find_all(text=address_re)
         email_tags = self.soup.find_all(text=email_re)
         emails = [unicode(x.string) for x in email_tags] or []
 
         # find common parent between phones/emails
         #for x in get_all_parents(email_tags[1]):
-        a = phone_tags[11]
-        b = email_tags[7]
-        print dist_to_common_parent(a, b)
+#        a = phone_tags[11]
+#        b = email_tags[7]
+#        print dist_to_common_parent(a, b)
 
         interesting_tags = set(email_tags + phone_tags)
 
@@ -104,6 +123,7 @@ class ContactMixin():
         contacts = group_by_common_parent(interesting_tags)
 
         return {
+            'address' : address,
             'contacts': contacts or [],
             'emails': emails,
             'email_tags': [unicode(x.parent) for x in email_tags] or [],
