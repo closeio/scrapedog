@@ -14,13 +14,12 @@ app = Flask(__name__)
 # debug
 dbg = app.logger.debug
 
-
 def scrape(url):
     scraper = ScrapeDog(url=url)
     response = scraper.get_content()
 
-    global soup
-    soup = scraper.soup
+    #global soup
+    #soup = scraper.soup
 
     return response
 
@@ -65,6 +64,12 @@ def dummy():
            'meta_tags': {'description': 'The homepage of the internet.'}
     }
     return json.dumps(obj)
+
+@app.route('/test')
+def test():
+    name = request.args.get('name', 'test')
+    scraper = ScrapeDog(page=render_template('%s.html' % name))
+    return jsonify(scraper.get_content())
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
