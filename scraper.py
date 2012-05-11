@@ -91,10 +91,10 @@ class ContactMixin():
     def find_urls(self):
         url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
         url_tags = self.soup.find_all(text=url_re)
+        url_tags = [x for x in url_tags if x != self.soup.contents[0]] # throw out root tag
         urls = [url_re.findall(unicode(x.string)) for x in url_tags] or []
         urls = list(itertools.chain(*urls)) # flatten array
-        urls = [x for x in urls if x.find('www.w3.org') == -1]
-        return (urls, [])
+        return (urls, url_tags)
 
     def rings_of_closeness(self, keyable_tag, interesting_tags, max_items_considered = 50):
         tags_matrix = {}
@@ -155,7 +155,7 @@ class ScrapeDog(BasicMixin, ContactMixin):
     def __init__(self, *args, **kwargs):
         self.url = kwargs.pop('url')
         self.request = requests.get(self.url)
-        self.orig_soup = BeautifulSoup(self.request.text)
+        self.orig_soup = BeautifulSoup(self.request.text.strip())
 
         # store version of "cleaned up" soup
         self.soup = self.orig_soup
