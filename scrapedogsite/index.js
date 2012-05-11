@@ -11,7 +11,7 @@ $(function(){
 			contentType: "application/json",
 			jsonpCallback: 'jsonCallback',
 			data: { url : url },
-			url: "http://scrapedog.herokuapp.com/?callback=?"
+			url: "http://scrapedog.herokuapp.com/test?callback=?"
 		});
 	});
 	

@@ -24,9 +24,14 @@ class BasicMixin():
             'meta_tags': meta_tags,
         }
 
+parents_cache = {}
 def get_all_parents(el):
     # from root down to parent of el
-    return list(reversed(list(el.parents)))
+    if parents_cache.get(el):
+        return parents_cache.get(el)
+    els = list(reversed(list(el.parents)))
+    parents_cache[el] = els
+    return els
 
 def get_all_children(el):
     # remove blanks
@@ -41,7 +46,12 @@ def root_to_el(el):
     els.append(el)
     return els
 
+common_parents_cache = {}
 def get_common_parents(a, b):
+    print 'get_common_parents', print_el(a), print_el(b)
+    if common_parents_cache.get((a, b)):
+        return common_parents_cache.get((a, b))
+
     # from root down to nearest common element -- could be one of a or b
     parents_a = root_to_el(a)
     parents_b = root_to_el(b)
@@ -49,6 +59,8 @@ def get_common_parents(a, b):
     for a, b in zip(parents_a, parents_b):
         if a == b:
             common.append(a)
+    common_parents_cache[(a,b)] = common
+    common_parents_cache[(b,a)] = common
     return common
 
 def closest_common_parent(a, b):
@@ -67,10 +79,13 @@ def dist_to_parent(el, parent):
     return dist
 
 def print_el(el):
-    if el.get('id'):
-        return '<%s#%s: %s>' % (el.name, el.get('id'), el.string)
+    if hasattr(el, 'get'):
+        if el.get('id'):
+            return '<%s#%s: %s>' % (el.name, el.get('id'), el.string)
+        else:
+            return '<%s: %s>' % (el.name, el.string)
     else:
-        return '<%s: %s>' % (el.name, el.string)
+        return '<%s>' % str(el)
 
 def group_by_common_parent(els):
     common_parents = collections.defaultdict(set)
@@ -136,7 +151,8 @@ class ContactMixin():
         """
         returns = {0:[tag1, tag2], 3:[tag3, tag4, tag5], 7: [tag6]}
 
-    def find_addresses(self):
+    def find_addresses(self, parent=None):
+        parent = parent or self.soup
         #(([a-zA-Z]{2}),?\s+([0-9]{5})(-[0-9]{4}))
         address_re = re.compile('([0-9]{1,5})\s+(.*),?\s+(.*)')
         address = []
@@ -148,7 +164,7 @@ class ContactMixin():
                 address_temp = address_re.match(soup.string.strip(' \n\t'))
                 if address_temp and len(address_temp.groups()):
                     address.append(soup)
-        test(self.soup.find('html'), 0)
+        test(parent.find('html'), 0)
         return address
 
     def build_contact(self, parent, list_interesting_children=None):
@@ -163,6 +179,7 @@ class ContactMixin():
             'urls': urls,
             'url_tags': [unicode(x.parent) for x in url_tags] or [],
         }
+        #'addresses': self.find_addresses(parent)
 
     def get_contact_content(self):
 
@@ -170,13 +187,19 @@ class ContactMixin():
         phones, phone_tags = self.find_phones()
         urls, url_tags = self.find_urls()
         interesting_tags = list(set(email_tags + phone_tags + url_tags))
-        address = self.find_addresses()
+        #address = self.find_addresses()
+
+        print len(interesting_tags), 'interesting tags'
 
         #if interesting_tags:
         #self.rings_of_closeness(interesting_tags[0], interesting_tags)
 
         root = []
         group = sorted(group_by_common_parent(interesting_tags).iteritems())
+
+        print len(group), 'group'
+
+
         for parent, children in group:
             """
             print ''

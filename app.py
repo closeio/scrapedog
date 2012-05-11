@@ -23,6 +23,13 @@ def scrape(url):
 
     return response
 
+def jsonpify(data):
+    callback = request.args.get('callback', '')
+    if callback:
+        return '%s(%s)' % (callback, json.dumps(data))
+    else:
+        return jsonify(data)
+
 
 @app.route('/')
 def main():
@@ -31,14 +38,9 @@ def main():
         if bool(re.match(request.host, url)):
             return '&#x0CA0;_&#x0CA0;'
         else:
-            callback = request.args.get('callback', '')
             response = scrape(url)
 
-            if callback:
-                return '%s(%s)' % (callback, json.dumps(response))
-            else:
-                return jsonify(response)
-
+        return jsonpify(response)
     else:
         return '<pre>Woah there, we need a URL.\nExample: ' + request.url_root + '?url=http://www.google.com </pre>'
 
@@ -69,7 +71,7 @@ def dummy():
 def test():
     name = request.args.get('name', 'test')
     scraper = ScrapeDog(page=render_template('%s.html' % name))
-    return jsonify(scraper.get_content())
+    return jsonpify(scraper.get_content())
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
