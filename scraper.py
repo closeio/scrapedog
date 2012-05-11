@@ -61,10 +61,9 @@ def group_by_common_parent(els):
     common_parents = collections.defaultdict(set)
     for a in els:
         for b in els:
-            for c in get_common_parents(a, b):
-                pass
-
-
+            common_parents[closest_common_parent(a, b)].add(a)
+            common_parents[closest_common_parent(a, b)].add(b)
+    return common_parents
 
 
 class ContactMixin():
@@ -88,6 +87,12 @@ class ContactMixin():
         phone_tags = self.soup.find_all(text=find_phones)
         return (phones, phone_tags)
 
+    def find_urls(self):
+        url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+        url_tags = self.soup.find_all(text=url_re)
+        urls = [unicode(x.string) for x in url_tags] or []
+        return (urls, url_tags)
+
     def rings_of_closeness(self, keyable_tag, interesting_tags, max_items_considered = 50):
         tags_matrix = {}
 
@@ -97,12 +102,13 @@ class ContactMixin():
                 tags_matrix[(i_tag_x, i_tag_y)] = dist_to_common_parent(tag_x, tag_y)
 
         L = tags_matrix.values()
+        """
         print tags_matrix
         print len(L)
         print len(interesting_tags)
         print dict([(x, L.count(x)) for x in L])
+        """
 
-        pass
         """
         returns = {0:[tag1, tag2], 3:[tag3, tag4, tag5], 7: [tag6]}
         """
@@ -112,10 +118,10 @@ class ContactMixin():
 
     def get_contact_content(self):
 
-        url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
         emails, email_tags = self.find_emails()
         phones, phone_tags = self.find_phones()
+        urls, url_tags = self.find_urls()
         interesting_tags = list(set(email_tags + phone_tags))
 
         self.rings_of_closeness(interesting_tags[0], interesting_tags)
@@ -126,6 +132,7 @@ class ContactMixin():
         # group each interesting tag by common parent
         # the same tag can appear in multiple common parents (like their grandparents)
         contacts = group_by_common_parent(interesting_tags)
+        #print contacts
 
         return {
             'contacts': contacts or [],
@@ -133,6 +140,8 @@ class ContactMixin():
             'email_tags': [unicode(x.parent) for x in email_tags] or [],
             'phones': phones,
             'phone_tags': [unicode(x.parent) for x in phone_tags] or [],
+            'urls': urls,
+            'url_tags': [unicode(x.parent) for x in url_tags] or [],
             'interesting_tags': [unicode(x.parent) for x in interesting_tags] or [],
         }
 
