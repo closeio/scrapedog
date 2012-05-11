@@ -17,7 +17,21 @@ class GoogleMap:
                 result = False
             elif (response['results'][0].has_key('partial_match')
             and response['results'][0]['partial_match'] == True):
-                result = False
+                formatted = response['results'][0]['formatted_address']
+                _address = address.replace('\n', ' ').replace('\t', ' ').replace(',', '')
+                _address2 = formatted.replace('\n', ' ').replace('\t', ' ').replace(',', '')
+                _address.split(' ')
+                _address2.split(' ')
+                
+                count = 0
+                for i in _address:
+                    if i in _address2:
+                        count += 1
+                
+                if float(count) / max(len(_address), len(_address2)) > 0.5:
+                    result = formatted
+                else:
+                    result = False
             else:
                 result = response['results'][0]['formatted_address']
                 
