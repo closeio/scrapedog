@@ -1,0 +1,1342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="styles.css" type="text/css">
+<title>Social Media Directory</title>
+<meta name="description" content="If you are looking for help with  contact ">
+<LINK REL="SHORTCUT ICON" HREF="http://SocialMediaDirectory.org/images/Social-Media-Directory-Icon.ico"/>
+<script type="text/javascript">
+function focusField(obj, value, col) {
+	if (obj.value == value) {
+		obj.style.color = 'black';
+		obj.value = '';
+	}
+}
+function blurField(obj, value, col) {
+	if (obj.value == '') {
+		obj.style.color = col;
+		obj.value = value;
+	}
+}
+function searchType(obj, parms) {
+	if (obj.value != '') {
+		window.location.href = 'x-type-' + obj.value + parms;
+	}
+}
+function copyListing(obj, id) {
+	if (obj.value != '') {
+		window.location.href = 'copylisting.php?dir=' + obj.value + '&cid=' + id;
+	}
+}
+function openTwitter(text, url) {
+	window.open("http://twitter.com/share?text=" + text + "&url=" + url, '', 'scrollbars=yes,menubar=no,height=400,width=600,resizable=yes,toolbar=no,location=no,status=no');
+}
+function getImage() {
+	for (var i=0; i < document.widgetform.image.length; i++) {
+	   if (document.widgetform.image[i].checked) {
+		   image = document.widgetform.image[i].value;
+	   }
+	}
+	return image;
+}
+function clickImage() {
+	image = getImage();
+	width = document.widgetform.elements[image + 'width'].value;
+	height = document.widgetform.elements[image + 'height'].value;
+	document.widgetform.elements['width'].value = width;
+	document.widgetform.elements['height'].value = height;
+	compname = document.widgetform.compwidgeturl.value;
+	changeCode(image, width, height, compname);
+}
+function changeImageSize() {
+	image = getImage();
+	width = document.widgetform.width.value;
+	height = document.widgetform.height.value;
+	compname = document.widgetform.compwidgeturl.value;
+	changeCode(image, width, height, compname);
+}
+function changeCode(image, width, height, compname) {
+	site = document.widgetform.elements['site'].value;
+	document.getElementById("imagemodel").innerHTML = '<img src="images/' + image + '.png" width="' + width + '" height="' + height + '"/>';
+	document.getElementById("widgetcodeid").value = '<a href="' + site + '/' + compname + '" target="_blank"><img style="border:none;" src="' + site + '/images/' + image + '.png" width="' + width + '" height="' + height + '"/></a>';
+}
+function loadTweet(obj) {
+	document.maketweetform.elements["tweet"].value = document.maketweetform.elements["tweettext[" + obj.value + "]"].value;
+}
+function enterCol(obj) {
+	document.maketweetform.elements["tweet"].value += "*" + obj.value + "*";
+	document.maketweetform.elements["selectfield"].value = "";
+}
+</script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3704932-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script></head>
+<body bgcolor="#F2F2F2" >
+	<table width="100%">
+		<tr>
+			<td align="middle">
+				<table width="100%">
+					<tr style='height:35px;'>
+						<form action="x-search-" method="POST">
+						<td bgcolor="#D8D8D8" style='vertical-align:middle;width:185px;padding-left:5px;'>
+							<input type="text" name="searchfield" size="20" value="Search" style='color:#BDBDBD;' onfocus='focusField(this,"Search");' onblur='blurField(this,"Search");'>&nbsp;&nbsp;<input type="image" src="images/searchmagnifier.png" height="15" width="15" alt="Submit Form">
+						</td>
+						</form>
+						<td align="left"><a href="http://twitter.com/SMDirectory" target='_blank'><img style='border:none;' src="images/twitter.png" width="30" height="30"/></a>&nbsp;<img src="images/ZNZNZ.png" width="30" height="30"/>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table width="100%">
+		<tr style='height:130px;'>
+			<td width="100%" align="center"><a href="-home"><img style='border:none;' src="images/Social-Media-Directory-Header.jpg" alt="Social Media Directory"/></a><br>
+			<a href="http://www.whitepapersource.com/cmd.php?Clk=4389246"><img class="alignnone" title="728x90" src="http://www.socialmediaexaminer.com/images/728x90fbss11.gif" alt="" width="908" height="110" /></a>
+			</td>
+		</tr>
+	</table>
+	<table width="100%">
+		<tr>
+			<td style='vertical-align:top;width:225px;'>
+				<table bgcolor="white" style='border:2px solid #D8D8D8;border-collapse:collapse;width:225px;'>
+					<tr>
+					<th bgcolor="E6E6E6" class="fontheader" style='color:black;border:2px solid #D8D8D8;'>Social Media Services</th>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='text-align:left;vertical-align:top;padding:5px 5px 5px 35px;'>
+<a href='x-type-Ad_Agency-country-US' class="link1" >Ad Agency (45)</a><br><a href='x-type-Blogging-country-US' class="link1" >Blogging (47)</a><br><a href='x-type-Business_Services-country-US' class="link1" >Business Services (42)</a><br><a href='x-type-Communications-country-US' class="link1" >Communications (49)</a><br><a href='x-type-Consulting-country-US' class="link1" >Consulting (168)</a><br><a href='x-type-Expert-country-US' class="link1" >Expert (35)</a><br><a href='x-type-Graphic_Design-country-US' class="link1" >Graphic Design (57)</a><br><a href='x-type-ISP-country-US' class="link1" >ISP (1)</a><br><a href='x-type-Legal-country-US' class="link1" >Legal (4)</a><br><a href='x-type-Logo_Design-country-US' class="link1" >Logo Design (22)</a><br><a href='x-type-Marketing-country-US' class="link1" >Marketing (218)</a><br><a href='x-type-News-country-US' class="link1" >News (0)</a><br><a href='x-type-Podcasting-country-US' class="link1" >Podcasting (3)</a><br><a href='x-type-Programming-country-US' class="link1" >Programming (15)</a><br><a href='x-type-Public_Relations-country-US' class="link1" >Public Relations (51)</a><br><a href='x-type-Sales-country-US' class="link1" >Sales (8)</a><br><a href='x-type-Seminar-country-US' class="link1" >Seminar (9)</a><br><a href='x-type-SEO-country-US' class="link1" >SEO (103)</a><br><a href='x-type-Social_Media_Author-country-US' class="link1" >Social Media Author (11)</a><br><a href='x-type-Social_Media_Club-country-US' class="link1" >Social Media Club (3)</a><br><a href='x-type-Social_Media_Management-country-US' class="link1" >Social Media Management (123)</a><br><a href='x-type-Software_Engineering-country-US' class="link1" >Software Engineering (12)</a><br><a href='x-type-Speaking-country-US' class="link1" >Speaking (45)</a><br><a href='x-type-Staffing-country-US' class="link1" >Staffing (5)</a><br><a href='x-type-System_Administration-country-US' class="link1" >System Administration (4)</a><br><a href='x-type-Tech_Support-country-US' class="link1" >Tech Support (11)</a><br><a href='x-type-Video_Production-country-US' class="link1" >Video Production (19)</a><br><a href='x-type-Web_Design-country-US' class="link1" >Web Design (114)</a><br><a href='x-type-Web_Development-country-US' class="link1" >Web Development (82)</a><br><a href='x-type-Web_Hosting-country-US' class="link1" >Web Hosting (14)</a><br><a href='x-type-Website_Management-country-US' class="link1" >Website Management (9)</a><br><a href='x-type-Workshop-country-US' class="link1" >Workshop (7)</a><br><a href='x-type-Writing_Services-country-US' class="link1" >Writing Services (21)</a><br><a href='x-type-Other-country-US' class="link1" >Other (12)</a><br></td>
+					</tr>
+				</table>
+				<table bgcolor="white" style='border:2px solid #D8D8D8;border-collapse:collapse;width:225px;margin-top:15px;'>
+					<tr>
+					<th bgcolor="E6E6E6" class="fontheader" style='color:black;border:2px solid #D8D8D8;'>Refine Search by State</th>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='text-align:left;vertical-align:top;padding:5px 5px 5px 35px;'>
+						<a href='x-state-AL' class="link1" >Alabama (8)</a><br><a href='x-state-AK' class="link1" >Alaska (0)</a><br><a href='x-state-AZ' class="link1" >Arizona (12)</a><br><a href='x-state-AR' class="link1" >Arkansas (1)</a><br><a href='x-state-CA' class="link1" >California (104)</a><br><a href='x-state-CO' class="link1" >Colorado (17)</a><br><a href='x-state-CT' class="link1" >Connecticut (6)</a><br><a href='x-state-DE' class="link1" >Delaware (1)</a><br><a href='x-state-DC' class="link1" >District of Columbia (3)</a><br><a href='x-state-FL' class="link1" >Florida (41)</a><br><a href='x-state-GA' class="link1" >Georgia (18)</a><br><a href='x-state-HI' class="link1" >Hawaii (0)</a><br><a href='x-state-ID' class="link1" >Idaho (1)</a><br><a href='x-state-IL' class="link1" >Illinois (20)</a><br><a href='x-state-IN' class="link1" >Indiana (5)</a><br><a href='x-state-IA' class="link1" >Iowa (1)</a><br><a href='x-state-KS' class="link1" >Kansas (1)</a><br><a href='x-state-KY' class="link1" >Kentucky (4)</a><br><a href='x-state-LA' class="link1" >Louisiana (5)</a><br><a href='x-state-ME' class="link1" >Maine (1)</a><br><a href='x-state-MD' class="link1" >Maryland (10)</a><br><a href='x-state-MA' class="link1" >Massachusetts (16)</a><br><a href='x-state-MI' class="link1" >Michigan (5)</a><br><a href='x-state-MN' class="link1" >Minnesota (6)</a><br><a href='x-state-MS' class="link1" >Mississippi (0)</a><br><a href='x-state-MO' class="link1" >Missouri (9)</a><br><a href='x-state-MT' class="link1" >Montana (1)</a><br><a href='x-state-NE' class="link1" >Nebraska (3)</a><br><a href='x-state-NV' class="link1" >Nevada (4)</a><br><a href='x-state-NH' class="link1" >New Hampshire (4)</a><br><a href='x-state-NJ' class="link1" >New Jersey (17)</a><br><a href='x-state-NM' class="link1" >New Mexico (1)</a><br><a href='x-state-NY' class="link1" >New York (27)</a><br><a href='x-state-NC' class="link1" >North Carolina (17)</a><br><a href='x-state-ND' class="link1" >North Dakota (0)</a><br><a href='x-state-OH' class="link1" >Ohio (17)</a><br><a href='x-state-OK' class="link1" >Oklahoma (4)</a><br><a href='x-state-OR' class="link1" >Oregon (7)</a><br><a href='x-state-PA' class="link1" >Pennsylvania (16)</a><br><a href='x-state-RI' class="link1" >Rhode Island (3)</a><br><a href='x-state-SC' class="link1" >South Carolina (3)</a><br><a href='x-state-SD' class="link1" >South Dakota (0)</a><br><a href='x-state-TN' class="link1" >Tennessee (10)</a><br><a href='x-state-TX' class="link1" >Texas (22)</a><br><a href='x-state-UT' class="link1" >Utah (43)</a><br><a href='x-state-VT' class="link1" >Vermont (0)</a><br><a href='x-state-VA' class="link1" >Virginia (6)</a><br><a href='x-state-WA' class="link1" >Washington (16)</a><br><a href='x-state-WV' class="link1" >West Virginia (2)</a><br><a href='x-state-WI' class="link1" >Wisconsin (3)</a><br><a href='x-state-WY' class="link1" >Wyoming (2)</a><br>						</td>
+					</tr>
+				</table>
+				<table bgcolor="white" style='border:2px solid #D8D8D8;border-collapse:collapse;width:225px;margin-top:15px;'>
+					<tr>
+					<th bgcolor="E6E6E6" class="fontheader" style='color:black;border:2px solid #D8D8D8;'>Refine Search by City</th>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='text-align:left;vertical-align:top;padding:5px 5px 5px 30px;'>
+						<a href='x-city-Salt_Lake_City' class="link1" >Salt Lake City, UT (18)</a><br><a href='x-city-Los_Angeles' class="link1" >Los Angeles, CA (16)</a><br><a href='x-city-New_York' class="link1" >New York, NY (12)</a><br><a href='x-city-San_Diego' class="link1" >San Diego, CA (10)</a><br><a href='x-city-Charlotte' class="link1" >Charlotte, NC (8)</a><br><a href='x-city-San_Francisco' class="link1" >San Francisco, CA (7)</a><br><a href='x-city-Atlanta' class="link1" >Atlanta, GA (7)</a><br><a href='x-city-Chicago' class="link1" >Chicago, IL (7)</a><br><a href='x-city-Portland' class="link1" >Portland, OR (6)</a><br><a href='x-city-Miami' class="link1" >Miami, FL (5)</a><br><a href='x-city-Tampa' class="link1" >Tampa, FL (5)</a><br><a href='x-city-Seattle' class="link1" >Seattle, WA (5)</a><br><a href='x-city-Denver' class="link1" >Denver, CO (5)</a><br><a href='x-city-Tucson' class="link1" >Tucson, AZ (4)</a><br><a href='x-city-Dallas' class="link1" >Dallas, TX (4)</a><br><a href='x-city-Louisville' class="link1" >Louisville, KY (4)</a><br><a href='x-city-Brooklyn' class="link1" >Brooklyn, NY (4)</a><br><a href='x-city-Orem' class="link1" >Orem, UT (4)</a><br><a href='x-city-Knoxville' class="link1" >Knoxville, TN (4)</a><br><a href='x-city-Vista' class="link1" >Vista, CA (4)</a><br>						</td>
+					</tr>
+				</table>
+				<table bgcolor="white" style='border:2px solid #D8D8D8;border-collapse:collapse;width:225px;margin-top:15px;'>
+					<tr>
+					<th bgcolor="E6E6E6" class="fontheader" style='color:black;border:2px solid #D8D8D8;'>By Postal Code</th>
+					</tr>
+					<tr>
+						<form action="x-search-" method="POST">
+						<td class="fontstyle" style='text-align:left;vertical-align:top;padding:5px 5px 5px 5px;'>
+						<input type="text" name="searchfield" size="17">&nbsp;&nbsp;<input type="submit" name="submitzip" value="Search" style='margin-top:5px;margin-bottom:5px;'></td>
+						</form>
+					</tr>
+				</table>
+				<table bgcolor="white" style='border:2px solid #D8D8D8;border-collapse:collapse;width:225px;margin-top:15px;'>
+					<tr>
+					<th bgcolor="E6E6E6" class="fontheader" style='color:black;border:2px solid #D8D8D8;'>Refine Search by Country</th>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='text-align:left;vertical-align:top;padding:5px 5px 5px 35px;'>
+						<a href='x-country-US' class="link1" style='color:red;'>United States (509)</a><br><a href='x-country-GB' class="link1" >United Kingdom (180)</a><br><a href='x-country-CA' class="link1" >Canada (43)</a><br><a href='x-country-AU' class="link1" >Australia (31)</a><br><a href='x-country-IN' class="link1" >India (19)</a><br><a href='x-country-NL' class="link1" >Netherlands (16)</a><br><a href='x-country-ES' class="link1" >Spain (10)</a><br><a href='x-country-NZ' class="link1" >New Zealand (6)</a><br><a href='x-country-PH' class="link1" >Philippines (6)</a><br><a href='x-country-IT' class="link1" >Italy (6)</a><br><a href='x-country-ZA' class="link1" >South Africa (6)</a><br><a href='x-country-AR' class="link1" >Argentina (6)</a><br><a href='x-country-BR' class="link1" >Brazil (5)</a><br><a href='x-country-IE' class="link1" >Ireland (5)</a><br><a href='x-country-CH' class="link1" >Switzerland (5)</a><br><a href='x-country-CO' class="link1" >Colombia (4)</a><br><a href='x-country-BE' class="link1" >Belgium (3)</a><br><a href='x-country-DE' class="link1" >Germany (3)</a><br><a href='x-country-EC' class="link1" >Ecuador (3)</a><br><a href='x-country-CN' class="link1" >China (2)</a><br><a href='x-country-LK' class="link1" >Sri Lanka (2)</a><br><a href='x-country-ID' class="link1" >Indonesia (2)</a><br><a href='x-country-LV' class="link1" >Latvia (2)</a><br><a href='x-country-FI' class="link1" >Finland (2)</a><br><a href='x-country-MK' class="link1" >Macedonia (2)</a><br><a href='x-country-FR' class="link1" >France (2)</a><br><a href='x-country-AT' class="link1" >Austria (2)</a><br><a href='x-country-TR' class="link1" >Turkey (2)</a><br><a href='x-country-MX' class="link1" >Mexico (1)</a><br><a href='x-country-VE' class="link1" >Venezuela (1)</a><br><a href='x-country-SG' class="link1" >Singapore (1)</a><br><a href='x-country-KE' class="link1" >Kenya (1)</a><br><a href='x-country-PK' class="link1" >Pakistan (1)</a><br><a href='x-country-JM' class="link1" >Jamaica (1)</a><br><a href='x-country-RO' class="link1" >Romania (1)</a><br><a href='x-country-AE' class="link1" >United Arab Emirates (1)</a><br><a href='x-country-GR' class="link1" >Greece (1)</a><br><a href='x-country-MY' class="link1" >Malaysia (1)</a><br><a href='x-country-TH' class="link1" >Thailand (1)</a><br><a href='x-country-DK' class="link1" >Denmark (1)</a><br><a href='x-country-PL' class="link1" >Poland (1)</a><br><a href='x-country-PT' class="link1" >Portugal (1)</a><br><a href='x-country-AN' class="link1" >Netherlands Antilles (1)</a><br>						</td>
+					</tr>
+				</table>
+			</td>
+			<td style='vertical-align:top;padding-left:10px;'>
+				<table width="100%" style='border-collapse:collapse;'>
+	<tr>
+	<td bgcolor="#F2F2F2" class="fontheader" style='text-align:center;border:2px solid #D8D8D8;'><a href="-home" class="link1" style='font-size:14px;color:black' onMouseOver="this.style.color='red';" onMouseOut="this.style.color='black';">Home</a></td>
+	<td  bgcolor="E6E6E6" class="fontheader" style='text-align:center;border:2px solid #D8D8D8;'><a href="-about" class="link1" style='font-size:14px;color:black' onMouseOver="this.style.color='red';" onMouseOut="this.style.color='black';">About</a></td>
+	<td bgcolor="E6E6E6" class="fontheader" style='text-align:center;border:2px solid #D8D8D8;'><a href="-contactus" class="link1" style='font-size:14px;color:black' onMouseOver="this.style.color='red';" onMouseOut="this.style.color='black';">Contact Us</a></td>
+	<td bgcolor="E6E6E6" class="fontheader" style='text-align:center;border:2px solid #D8D8D8;'><a href="-login" class="link1" style='font-size:14px;color:black' onMouseOver="this.style.color='red';" onMouseOut="this.style.color='black';">Login</a></td>
+	</tr>
+</table><table bgcolor="white" width="100%" style='border:2px solid #D8D8D8;border-collapse:collapse;'>
+		<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="Need-A-Producer-LLC" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">Need A Producer, LLC</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'>Huseyin Aksu</td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						Video Production, Web Design, Social Media Management<br><br>8880 Cal Center Dr, Suite 400<br> Sacramento CA 95826						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1175-review-write" class="link2">Write A Review >><a/><br>
+						<a href="Need-A-Producer-LLC" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1175-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>(800) 874-9498</td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http://www.BrainChildMedia.com" target="_blank"><img style='border:none;' src="" alt="Need A Producer, LLC" width="0" height="0"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('6@gm','com','to:t','ain3','mail','','ail.','hebr');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+					<tr><td>&nbsp;<br>&nbsp;</td></tr>					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						You&#039;re one stop shop for all your digital media needs: Video, Music, Design, Social Media Management, Photography, Digital Art<br />
+<br />
+If you want to share a distinct, creative vision with us, we would love to work with you&#039;re company. We are located in Sacramento, CA but travel arrangements can be made for on-location filming. Please, contact us for quotes.<br><br><a href="http://www.BrainChildMedia.com" target='_blank'>http://www.BrainChildMedia.com</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+						Follow on:<br>	<a href='http://www.facebook.com/NeedAProducer' target='_blank' title='http://www.facebook.com/NeedAProducer'><img style='border:none;' src="images/facebook.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://twitter.com/HuseyinTheBrain' target='_blank' title='http://twitter.com/HuseyinTheBrain'><img style='border:none;' src="images/twitter.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.youtube.com/HuseyinTheBrain' target='_blank' title='http://www.youtube.com/HuseyinTheBrain'><img style='border:none;' src="images/youtube.png" width="30" height="30"/></a>&nbsp;
+							</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: May 1, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/Need-A-Producer-LLC&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[0]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="Write-Web-Marketing" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">Write Web Marketing</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'>Julia Senesac</td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						Marketing, Consulting, SEO<br><br>1520 Hearthfire Drive<br> Fort Collins CO 80524						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1173-review-write" class="link2">Write A Review >><a/><br>
+						<a href="Write-Web-Marketing" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1173-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>970.484.6723</td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http;//writewebmarketing.com" target="_blank"><img style='border:none;' src="" alt="Write Web Marketing" width="0" height="0"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('esac','il.c','to:j','.sen','mail','om','@gma','ulia');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+											<tr>
+							<td class="fontstyle" style='color:gray;padding:1px 20px;vertical-align:top;'><img src="images/skype.jpg"/><br>Skype Name: juliasenesac</td>
+						</tr>
+											<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						Local Internet Marketing Consultant | Social Media | Relationship Marketing | Strategist | Trainer | Speaker | <br />
+<br />
+Local Market Strategist, Social Media, SEO, Mobile, Internet Marketing Consultant, Trainer &amp; Speaker at Market Me Local<br />
+<br />
+Internet Marketing, Social Media &amp; Relationship Marketing Strategist, Consultant, Trainer &amp; Speaker at Write Web Marketing<br><br><a href="http;//writewebmarketing.com" target='_blank'>http;//writewebmarketing.com</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+						Follow on:<br>	<a href='https://www.facebook.com/julia.senesac' target='_blank' title='https://www.facebook.com/julia.senesac'><img style='border:none;' src="images/facebook.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://twitter.com/WriteWeb' target='_blank' title='http://twitter.com/WriteWeb'><img style='border:none;' src="images/twitter.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.linkedin.com/in/juliasenesac' target='_blank' title='http://www.linkedin.com/in/juliasenesac'><img style='border:none;' src="images/linkedin.png" width="30" height="30"/></a>&nbsp;
+		<a href='https://plus.google.com/u/0/110331733298642017282/posts' target='_blank' title='https://plus.google.com/u/0/110331733298642017282/posts'><img style='border:none;' src="images/googleplus.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.flickr.com/photos/juliasenesac/' target='_blank' title='http://www.flickr.com/photos/juliasenesac/'><img style='border:none;' src="images/flickr.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://MarketMeLocal.com' target='_blank' title='http://MarketMeLocal.com'><img style='border:none;' src="images/blogger.png" width="30" height="30"/></a>&nbsp;
+		<a href='https://foursquare.com/juliasenesac' target='_blank' title='https://foursquare.com/juliasenesac'><img style='border:none;' src="images/foursquare.png" width="30" height="30"/></a>&nbsp;
+							</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: Apr 26, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/Write-Web-Marketing&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[1]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="Media-Techs" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">Media Techs</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'>Tom Baker</td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						Social Media Author, SEO, Social Media Management<br><br>7815 Kingsbury Wood<br> Unit 3<br> San Antonio TX 78240						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1171-review-write" class="link2">Write A Review >><a/><br>
+						<a href="Media-Techs" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1171-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>210-859-6212</td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http://www.mediatechssa.com" target="_blank"><img style='border:none;' src="" alt="Media Techs" width="0" height="0"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('sac','e.c','lto','ver','mai','om','e@m',':xo');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+					<tr><td>&nbsp;<br>&nbsp;</td></tr>					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						<br><br><a href="http://www.mediatechssa.com" target='_blank'>http://www.mediatechssa.com</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+												</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: Apr 25, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/Media-Techs&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[2]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="best-recetas" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">best recetas</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'>bestrecetas</td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						Marketing, Blogging, SEO<br><br>hay hassani rue 44<br> 20456<br> charlotte NC 28253						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1169-review-write" class="link2">Write A Review >><a/><br>
+						<a href="best-recetas" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1169-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>212665895478</td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http://www.bestrecetas.com/" target="_blank"><img style='border:none;' src="" alt="best recetas" width="0" height="0"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('as@y','.com','to:b','ecet','mail','','ahoo','estr');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+											<tr>
+							<td class="fontstyle" style='color:gray;padding:1px 20px;vertical-align:top;'><img src="images/skype.jpg"/><br>Skype Name: steklephoneir</td>
+						</tr>
+											<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						Las recetas de cocina y postres<br><br><a href="http://www.bestrecetas.com/" target='_blank'>http://www.bestrecetas.com/</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+						Follow on:<br>	<a href='http://www.facebook.com/younnesse' target='_blank' title='http://www.facebook.com/younnesse'><img style='border:none;' src="images/facebook.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://twitter.com/bestrecetas' target='_blank' title='http://twitter.com/bestrecetas'><img style='border:none;' src="images/twitter.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://nairms' target='_blank' title='http://nairms'><img style='border:none;' src="images/ZNZNZ.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.linkedin.com/in/bestrecetas' target='_blank' title='http://www.linkedin.com/in/bestrecetas'><img style='border:none;' src="images/linkedin.png" width="30" height="30"/></a>&nbsp;
+		<a href='https://plus.google.com/112825809691334721742/posts?hl=fr' target='_blank' title='https://plus.google.com/112825809691334721742/posts?hl=fr'><img style='border:none;' src="images/googleplus.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.flickr.com/people/comunication-telephonique/' target='_blank' title='http://www.flickr.com/people/comunication-telephonique/'><img style='border:none;' src="images/flickr.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.youtube.com/user/hadebui?feature=mhee' target='_blank' title='http://www.youtube.com/user/hadebui?feature=mhee'><img style='border:none;' src="images/youtube.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.comidasanaynuritiva.com/' target='_blank' title='http://www.comidasanaynuritiva.com/'><img style='border:none;' src="images/blogger.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://telephonerparinternet.tumblr.com/' target='_blank' title='http://telephonerparinternet.tumblr.com/'><img style='border:none;' src="images/tumblr.png" width="30" height="30"/></a>&nbsp;
+							</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: Apr 24, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/best-recetas&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[3]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="Socigencom" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">Socigen.com</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'>John DiCristo</td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						Social Media Management, SEO, Social Media Club<br><br>6036 Abergele Ln<br> Matthews NC 28104						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1163-review-write" class="link2">Write A Review >><a/><br>
+						<a href="Socigencom" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1163-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>704-576-6234</td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http://www.socigen.com" target="_blank"><img style='border:none;' src="images/logos/Socigencom-1163.jpg" alt="Socigen.com" width="127.1186440678" height="125"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('@so','en.','lto','oop','mai','com','cig',':sc');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+					<tr><td>&nbsp;<br>&nbsp;</td></tr>					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						Facebook Business Page Directory. Custom Facebook Pages, YouTube optimization and channel creation. YouTube director and producer. Facebook apps. SociGen, &quot;The Social Generation&quot;<br><br><a href="http://www.socigen.com" target='_blank'>http://www.socigen.com</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+						Follow on:<br>	<a href='http://www.facebook.com/socigen' target='_blank' title='http://www.facebook.com/socigen'><img style='border:none;' src="images/facebook.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://twitter.com/socigen' target='_blank' title='http://twitter.com/socigen'><img style='border:none;' src="images/twitter.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.linkedin.com/in/johndicristo' target='_blank' title='http://www.linkedin.com/in/johndicristo'><img style='border:none;' src="images/linkedin.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.youtube.com/user/socigen' target='_blank' title='http://www.youtube.com/user/socigen'><img style='border:none;' src="images/youtube.png" width="30" height="30"/></a>&nbsp;
+							</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: Apr 9, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/Socigencom&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[4]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="Dotnet-Lounge" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">Dotnet Lounge</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'>Chris Miller</td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						Business Services, Website Management<br><br>250 West Huron Street<br> Chicago IL 60160						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1160-review-write" class="link2">Write A Review >><a/><br>
+						<a href="Dotnet-Lounge" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1160-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'></td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http://www.aspnetsocialnetworking.com" target="_blank"><img style='border:none;' src="images/logos/Dotnet-Lounge-1160.png" alt="Dotnet Lounge" width="250" height="46.229802513465"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('@fli','com','to:c','toph','mail','','avo.','hris');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+											<tr>
+							<td class="fontstyle" style='color:gray;padding:1px 20px;vertical-align:top;'><img src="images/skype.jpg"/><br>Skype Name: web.candy</td>
+						</tr>
+											<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						Developers of Social Connect for ASP.net, a framework which allows communities and businesses to create and run their own Social Networks.<br><br><a href="http://www.aspnetsocialnetworking.com" target='_blank'>http://www.aspnetsocialnetworking.com</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+						Follow on:<br>	<a href='http://www.facebook.com/SocialConnectNet' target='_blank' title='http://www.facebook.com/SocialConnectNet'><img style='border:none;' src="images/facebook.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://twitter.com/SConnectForNet' target='_blank' title='http://twitter.com/SConnectForNet'><img style='border:none;' src="images/twitter.png" width="30" height="30"/></a>&nbsp;
+							</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: Mar 30, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/Dotnet-Lounge&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[5]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="iSocialDesigncom" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">iSocialDesign.com</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'>Aida Rojas</td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						SEO, Web Design, Social Media Management<br><br>PO Box 1252 <br> Grapevine TX 76051						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1159-review-write" class="link2">Write A Review >><a/><br>
+						<a href="iSocialDesigncom" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1159-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>214.702.6326</td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http://www.isocialdesign.com" target="_blank"><img style='border:none;' src="images/logos/iSocialDesigncom-1159.jpg" alt="iSocialDesign.com" width="221" height="110"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('sign','il.c','to:i','alde','mail','om','@gma','soci');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+					<tr><td>&nbsp;<br>&nbsp;</td></tr>					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						iSocialDesign is an Internet Marketing Service company based out of Grapevine, TX. We help local DFW businesses with : Social Media Marketing, Web Design, Google Places, Google Analytics, Wordpress, Search Engine Optimization, Mobile Websites, Facebook Timeline Pages, Twitter Backgrounds &amp; More.<br><br><a href="http://www.isocialdesign.com" target='_blank'>http://www.isocialdesign.com</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+						Follow on:<br>	<a href='http://www.facebook.com/isocialdesign' target='_blank' title='http://www.facebook.com/isocialdesign'><img style='border:none;' src="images/facebook.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://twitter.com/isocialdesign' target='_blank' title='http://twitter.com/isocialdesign'><img style='border:none;' src="images/twitter.png" width="30" height="30"/></a>&nbsp;
+							</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: Mar 30, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/iSocialDesigncom&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[6]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="Social-Media-Job-Site" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">Social Media Job Site</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'></td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						Staffing<br><br> Baton Rouge LA						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1158-review-write" class="link2">Write A Review >><a/><br>
+						<a href="Social-Media-Job-Site" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1158-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'></td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http://localsocialmediajobsite.com" target="_blank"><img style='border:none;' src="images/logos/Social-Media-Job-Site-1158.jpg" alt="Social Media Job Site" width="128.42465753425" height="125"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('ine','ox.','lto','lev','mai','net','1@c',':es');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+					<tr><td>&nbsp;<br>&nbsp;</td></tr>					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						Find a job in Social Media<br />
+<br />
+Local Social Media Jobs is a free online service for the general US public to use in their effort to find a local hiring opportunities, both part time and full time. We do not represent, endorse, or, in any way affiliated with those employers, agents, or entities listed on our site. For specific job inquiries, please contact the hiring company directly.<br><br><a href="http://localsocialmediajobsite.com" target='_blank'>http://localsocialmediajobsite.com</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+												</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: Mar 30, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/Social-Media-Job-Site&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[7]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="Command-Partners" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">Command Partners</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'>Matt Coffey</td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						Social Media Management, Public Relations, Marketing<br><br>2125 Southend Drive<br> Charlotte NC 28203						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1154-review-write" class="link2">Write A Review >><a/><br>
+						<a href="Command-Partners" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1154-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>704-910-5727 ext.304</td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http://commandpartners.com" target="_blank"><img style='border:none;' src="images/logos/Command-Partners-1154.jpg" alt="Command Partners" width="250" height="122.5"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('andp','ers.','to:m','comm','mail','com','artn','att@');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+					<tr><td>&nbsp;<br>&nbsp;</td></tr>					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						With each client engagement, we begin by looking closely at where your business is, where you want to be and what needs to be done to get there. We analyze the competition to make sure we know where you stand. Then, we develop a comprehensive plan with specific strategies and tactics designed to put you back in control of conversations surrounding your brand.<br />
+<br />
+Finally, we provide tools that allow our clients to quickly and easily gauge how well their online marketing campaigns are doing. The result is better intelligence that leads to faster, accurate decision making.<br><br><a href="http://commandpartners.com" target='_blank'>http://commandpartners.com</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+						Follow on:<br>	<a href='http://www.facebook.com/commandpartners' target='_blank' title='http://www.facebook.com/commandpartners'><img style='border:none;' src="images/facebook.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://twitter.com/commandpartners' target='_blank' title='http://twitter.com/commandpartners'><img style='border:none;' src="images/twitter.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.linkedin.com/company/2143966?trk=tyah' target='_blank' title='http://www.linkedin.com/company/2143966?trk=tyah'><img style='border:none;' src="images/linkedin.png" width="30" height="30"/></a>&nbsp;
+		<a href='https://plus.google.com/u/0/b/101851141807638889798/' target='_blank' title='https://plus.google.com/u/0/b/101851141807638889798/'><img style='border:none;' src="images/googleplus.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://commandpartners.com/blog' target='_blank' title='http://commandpartners.com/blog'><img style='border:none;' src="images/blogger.png" width="30" height="30"/></a>&nbsp;
+							</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: Mar 19, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/Command-Partners&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[8]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td style='vertical-align:top;'>
+				<table width="100%">
+					<tr>
+						<td width="100%" colspan="2" style='font-family:Arial,Sans-serif;font-size:20px;padding:10px 20px;'>
+						<a href="Postano" class="link1" style='font-size:24px;color:#B40404;font-weight:bold;' onMouseOver="this.style.color='black';" onMouseOut="this.style.color='#B40404';">Postano</a><br>
+						</td>
+					</tr>
+					<tr><td class="fontstyle" colspan="2" style='font-weight:bold;padding:1px 20px;'>Portano</td></tr>
+					<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'>
+						Marketing, SEO, Social Media Management<br><br>1532 SW Morrison Street, Suite 200<br> Portland OR 97205						</td>
+						<td width="40%" class="fontstyle" align="right" style='color:gray;padding:1px 20px;'>
+												<a href="x-cid-1152-review-write" class="link2">Write A Review >><a/><br>
+						<a href="Postano" class="link2">Read Reviews >><a/><br>
+						<a href="x-cid-1152-widget-x" class="link2">Get Follow Me button >><a/><br>
+						</td>
+					</tr>
+										<tr>
+						<td width="60%" class="fontstyle" style='color:gray;padding:1px 20px;'></td>
+						<td width="40%" rowspan="4" align="right" style='vertical-align:middle;padding:1px 20px;'>
+						<a href="http://htpp://www.postano.com" target="_blank"><img style='border:none;' src="images/logos/Postano-1152.jpg" alt="Postano" width="125" height="125"/></a></td>
+					</tr>
+					<tr>
+						<td class="fontstyle" style='color:gray;padding:1px 20px;'><script type='text/javascript'>var a = new Array('fy-in','tive.','o:pos','ampli','mailt','com','terac','tano@');document.write("<a href='"+a[4]+a[2]+a[7]+a[3]+a[0]+a[6]+a[1]+a[5]+"'><img style='border:none;' src='images/email.jpg' width='30' height='30'/></a>");</script></td>
+					</tr>
+					<tr><td>&nbsp;<br>&nbsp;</td></tr>					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td width="100%" class="fontstyle" colspan="2" style='padding:1px 20px;'><br>
+						[Postano] offers a social media tool that makes it easy for individuals and organizations to aggregate, curate and display social media content from multiple sources via an embeddable widget.<br><br><a href="http://htpp://www.postano.com" target='_blank'>http://htpp://www.postano.com</a>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='padding:1px 20px;'>
+						Follow on:<br>	<a href='http://www.facebook.com/thepostano' target='_blank' title='http://www.facebook.com/thepostano'><img style='border:none;' src="images/facebook.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://twitter.com/ilpostano' target='_blank' title='http://twitter.com/ilpostano'><img style='border:none;' src="images/twitter.png" width="30" height="30"/></a>&nbsp;
+		<a href='https://plus.google.com/106059173269688179683/posts' target='_blank' title='https://plus.google.com/106059173269688179683/posts'><img style='border:none;' src="images/googleplus.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.youtube.com/user/tigerlogicpostano' target='_blank' title='http://www.youtube.com/user/tigerlogicpostano'><img style='border:none;' src="images/youtube.png" width="30" height="30"/></a>&nbsp;
+		<a href='http://www.postano.com/blog/feed' target='_blank' title='http://www.postano.com/blog/feed'><img style='border:none;' src="images/googlereader.png" width="30" height="30"/></a>&nbsp;
+							</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="fontstyle" style='color:gray;padding:1px 20px;text-align:right;'>Date Listed: Mar 14, 2012 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<iframe src="http://www.facebook.com/plugins/like.php?href=http://SocialMediaDirectory.org/Postano&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:20px;" allowTransparency="true"></iframe>
+							<span id="twittercode[9]"></span>
+						</td>
+					</tr>
+				</table>
+							<hr color="#D8D8D8">
+			</td>
+		</tr>
+				<tr>
+			<td size="50%" align="left" style='padding-left:10px;padding-right:10px;'>
+			<table width="100%">
+			<tr>
+			<td width="50%">
+						</td>
+			<td width="50%" align="right">
+							<a href="x-country-US-page-2" class="link2" style="color:#B40404;">More Entries</a>
+							</td>
+			</tr>
+			</table>
+			</td>
+		</tr>
+	</table>			</td>
+			<td style='vertical-align:top;width:225px;padding-left:10px;'>
+			<table bgcolor="white" style='border:2px solid #D8D8D8;border-collapse:collapse;width:225px;'>
+	<tr>
+	<th bgcolor="E6E6E6" class="fontheader" style='color:black;border:2px solid #D8D8D8;'>Submit Your Service/Company</th>	</tr>
+	<tr>
+		<td class="fontstyle" style='text-align:center;vertical-align:top;'>
+						<form name="entryform" action="-home" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="logincid" value="0">
+							<input type="hidden" name="fieldid[0]" value="1">
+				<input type="hidden" name="fieldname[0]" value="companyname">
+				<input type="hidden" name="tablename[0]" value="company_data">
+				<input type="hidden" name="default[0]" value="Company Name">
+				<input type="hidden" name="required[0]" value="y">
+									<input type="text" name="compdata[0]" size="30" value="Company Name" maxlength="40" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Company Name","#BDBDBD");' onblur='blurField(this,"Company Name","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[1]" value="23">
+				<input type="hidden" name="fieldname[1]" value="contactname">
+				<input type="hidden" name="tablename[1]" value="company_data">
+				<input type="hidden" name="default[1]" value="Contact Name">
+				<input type="hidden" name="required[1]" value="n">
+									<input type="text" name="compdata[1]" size="30" value="Contact Name" maxlength="30" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Contact Name","#BDBDBD");' onblur='blurField(this,"Contact Name","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[2]" value="17">
+				<input type="hidden" name="fieldname[2]" value="address1">
+				<input type="hidden" name="tablename[2]" value="company_data">
+				<input type="hidden" name="default[2]" value="Address 1">
+				<input type="hidden" name="required[2]" value="n">
+									<input type="text" name="compdata[2]" size="30" value="Address 1" maxlength="50" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Address 1","#BDBDBD");' onblur='blurField(this,"Address 1","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[3]" value="18">
+				<input type="hidden" name="fieldname[3]" value="address2">
+				<input type="hidden" name="tablename[3]" value="company_data">
+				<input type="hidden" name="default[3]" value="Address 2">
+				<input type="hidden" name="required[3]" value="n">
+									<input type="text" name="compdata[3]" size="30" value="Address 2" maxlength="50" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Address 2","#BDBDBD");' onblur='blurField(this,"Address 2","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[4]" value="19">
+				<input type="hidden" name="fieldname[4]" value="city">
+				<input type="hidden" name="tablename[4]" value="company_data">
+				<input type="hidden" name="default[4]" value="City">
+				<input type="hidden" name="required[4]" value="n">
+									<input type="text" name="compdata[4]" size="30" value="City" maxlength="50" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"City","#BDBDBD");' onblur='blurField(this,"City","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[5]" value="20">
+				<input type="hidden" name="fieldname[5]" value="state">
+				<input type="hidden" name="tablename[5]" value="company_data">
+				<input type="hidden" name="default[5]" value="State">
+				<input type="hidden" name="required[5]" value="n">
+				<select name="compdata[5]" class="field" style='color:#BDBDBD;;height:30px;width:211px;margin-top:5px;padding-left:2px;' onfocus='focusField(this,"State","#BDBDBD");' onblur='blurField(this,"State","#BDBDBD");'>
+<option value="State">State</option>
+	<option value="AL" >Alabama</option>
+		<option value="AK" >Alaska</option>
+		<option value="AZ" >Arizona</option>
+		<option value="AR" >Arkansas</option>
+		<option value="CA" >California</option>
+		<option value="CO" >Colorado</option>
+		<option value="CT" >Connecticut</option>
+		<option value="DE" >Delaware</option>
+		<option value="DC" >District of Columbia</option>
+		<option value="FL" >Florida</option>
+		<option value="GA" >Georgia</option>
+		<option value="HI" >Hawaii</option>
+		<option value="ID" >Idaho</option>
+		<option value="IL" >Illinois</option>
+		<option value="IN" >Indiana</option>
+		<option value="IA" >Iowa</option>
+		<option value="KS" >Kansas</option>
+		<option value="KY" >Kentucky</option>
+		<option value="LA" >Louisiana</option>
+		<option value="ME" >Maine</option>
+		<option value="MD" >Maryland</option>
+		<option value="MA" >Massachusetts</option>
+		<option value="MI" >Michigan</option>
+		<option value="MN" >Minnesota</option>
+		<option value="MS" >Mississippi</option>
+		<option value="MO" >Missouri</option>
+		<option value="MT" >Montana</option>
+		<option value="NE" >Nebraska</option>
+		<option value="NV" >Nevada</option>
+		<option value="NH" >New Hampshire</option>
+		<option value="NJ" >New Jersey</option>
+		<option value="NM" >New Mexico</option>
+		<option value="NY" >New York</option>
+		<option value="NC" >North Carolina</option>
+		<option value="ND" >North Dakota</option>
+		<option value="OH" >Ohio</option>
+		<option value="OK" >Oklahoma</option>
+		<option value="OR" >Oregon</option>
+		<option value="PA" >Pennsylvania</option>
+		<option value="RI" >Rhode Island</option>
+		<option value="SC" >South Carolina</option>
+		<option value="SD" >South Dakota</option>
+		<option value="TN" >Tennessee</option>
+		<option value="TX" >Texas</option>
+		<option value="UT" >Utah</option>
+		<option value="VT" >Vermont</option>
+		<option value="VA" >Virginia</option>
+		<option value="WA" >Washington</option>
+		<option value="WV" >West Virginia</option>
+		<option value="WI" >Wisconsin</option>
+		<option value="WY" >Wyoming</option>
+	</select>				<input type="hidden" name="fieldid[6]" value="30">
+				<input type="hidden" name="fieldname[6]" value="country">
+				<input type="hidden" name="tablename[6]" value="company_data">
+				<input type="hidden" name="default[6]" value="Country">
+				<input type="hidden" name="required[6]" value="n">
+				<select name="compdata[6]" class="field" style='color:#BDBDBD;;height:30px;width:211px;margin-top:5px;padding-left:2px;' onfocus='focusField(this,"Country","#BDBDBD");' onblur='blurField(this,"Country","#BDBDBD");'>
+<option value="Country">Country</option>
+	<option value="US" >United States</option>
+		<option value="GB" >United Kingdom</option>
+		<option value="CA" >Canada</option>
+		<option value="AF" >Afghanistan</option>
+		<option value="AL" >Albania</option>
+		<option value="DZ" >Algeria</option>
+		<option value="DS" >American Samoa</option>
+		<option value="AD" >Andorra</option>
+		<option value="AO" >Angola</option>
+		<option value="AI" >Anguilla</option>
+		<option value="AG" >Antigua and/or Barbuda</option>
+		<option value="AR" >Argentina</option>
+		<option value="AM" >Armenia</option>
+		<option value="AW" >Aruba</option>
+		<option value="AU" >Australia</option>
+		<option value="AT" >Austria</option>
+		<option value="AZ" >Azerbaijan</option>
+		<option value="BS" >Bahamas</option>
+		<option value="BH" >Bahrain</option>
+		<option value="BD" >Bangladesh</option>
+		<option value="BB" >Barbados</option>
+		<option value="BY" >Belarus</option>
+		<option value="BE" >Belgium</option>
+		<option value="BZ" >Belize</option>
+		<option value="BJ" >Benin</option>
+		<option value="BM" >Bermuda</option>
+		<option value="BT" >Bhutan</option>
+		<option value="BO" >Bolivia</option>
+		<option value="BA" >Bosnia and Herzegovina</option>
+		<option value="BW" >Botswana</option>
+		<option value="BV" >Bouvet Island</option>
+		<option value="BR" >Brazil</option>
+		<option value="IO" >British lndian Ocean Territory</option>
+		<option value="BN" >Brunei Darussalam</option>
+		<option value="BG" >Bulgaria</option>
+		<option value="BF" >Burkina Faso</option>
+		<option value="BI" >Burundi</option>
+		<option value="KH" >Cambodia</option>
+		<option value="CM" >Cameroon</option>
+		<option value="CV" >Cape Verde</option>
+		<option value="KY" >Cayman Islands</option>
+		<option value="CF" >Central African Republic</option>
+		<option value="TD" >Chad</option>
+		<option value="CL" >Chile</option>
+		<option value="CN" >China</option>
+		<option value="CX" >Christmas Island</option>
+		<option value="CC" >Cocos (Keeling) Islands</option>
+		<option value="CO" >Colombia</option>
+		<option value="KM" >Comoros</option>
+		<option value="CG" >Congo</option>
+		<option value="CK" >Cook Islands</option>
+		<option value="CR" >Costa Rica</option>
+		<option value="HR" >Croatia (Hrvatska)</option>
+		<option value="CU" >Cuba</option>
+		<option value="CY" >Cyprus</option>
+		<option value="CZ" >Czech Republic</option>
+		<option value="DK" >Denmark</option>
+		<option value="DJ" >Djibouti</option>
+		<option value="DM" >Dominica</option>
+		<option value="DO" >Dominican Republic</option>
+		<option value="TP" >East Timor</option>
+		<option value="EC" >Ecuador</option>
+		<option value="EG" >Egypt</option>
+		<option value="SV" >El Salvador</option>
+		<option value="GQ" >Equatorial Guinea</option>
+		<option value="ER" >Eritrea</option>
+		<option value="EE" >Estonia</option>
+		<option value="ET" >Ethiopia</option>
+		<option value="FK" >Falkland Islands (Malvinas)</option>
+		<option value="FO" >Faroe Islands</option>
+		<option value="FJ" >Fiji</option>
+		<option value="FI" >Finland</option>
+		<option value="FR" >France</option>
+		<option value="FX" >France, Metropolitan</option>
+		<option value="GF" >French Guiana</option>
+		<option value="PF" >French Polynesia</option>
+		<option value="TF" >French Southern Territories</option>
+		<option value="GA" >Gabon</option>
+		<option value="GM" >Gambia</option>
+		<option value="GE" >Georgia</option>
+		<option value="DE" >Germany</option>
+		<option value="GH" >Ghana</option>
+		<option value="GI" >Gibraltar</option>
+		<option value="GR" >Greece</option>
+		<option value="GL" >Greenland</option>
+		<option value="GD" >Grenada</option>
+		<option value="GP" >Guadeloupe</option>
+		<option value="GU" >Guam</option>
+		<option value="GT" >Guatemala</option>
+		<option value="GN" >Guinea</option>
+		<option value="GW" >Guinea-Bissau</option>
+		<option value="GY" >Guyana</option>
+		<option value="HT" >Haiti</option>
+		<option value="HM" >Heard and Mc Donald Islands</option>
+		<option value="HN" >Honduras</option>
+		<option value="HK" >Hong Kong</option>
+		<option value="HU" >Hungary</option>
+		<option value="IS" >Iceland</option>
+		<option value="IN" >India</option>
+		<option value="ID" >Indonesia</option>
+		<option value="IR" >Iran (Islamic Republic of)</option>
+		<option value="IQ" >Iraq</option>
+		<option value="IE" >Ireland</option>
+		<option value="IL" >Israel</option>
+		<option value="IT" >Italy</option>
+		<option value="CI" >Ivory Coast</option>
+		<option value="JM" >Jamaica</option>
+		<option value="JP" >Japan</option>
+		<option value="JO" >Jordan</option>
+		<option value="KZ" >Kazakhstan</option>
+		<option value="KE" >Kenya</option>
+		<option value="KI" >Kiribati</option>
+		<option value="KP" >Korea, Democratic People's Republic of</option>
+		<option value="KR" >Korea, Republic of</option>
+		<option value="KW" >Kuwait</option>
+		<option value="KG" >Kyrgyzstan</option>
+		<option value="LA" >Lao People's Democratic Republic</option>
+		<option value="LV" >Latvia</option>
+		<option value="LB" >Lebanon</option>
+		<option value="LS" >Lesotho</option>
+		<option value="LR" >Liberia</option>
+		<option value="LY" >Libyan Arab Jamahiriya</option>
+		<option value="LI" >Liechtenstein</option>
+		<option value="LT" >Lithuania</option>
+		<option value="LU" >Luxembourg</option>
+		<option value="MO" >Macau</option>
+		<option value="MK" >Macedonia</option>
+		<option value="MG" >Madagascar</option>
+		<option value="MW" >Malawi</option>
+		<option value="MY" >Malaysia</option>
+		<option value="MV" >Maldives</option>
+		<option value="ML" >Mali</option>
+		<option value="MT" >Malta</option>
+		<option value="MH" >Marshall Islands</option>
+		<option value="MQ" >Martinique</option>
+		<option value="MR" >Mauritania</option>
+		<option value="MU" >Mauritius</option>
+		<option value="TY" >Mayotte</option>
+		<option value="MX" >Mexico</option>
+		<option value="FM" >Micronesia, Federated States of</option>
+		<option value="MD" >Moldova, Republic of</option>
+		<option value="MC" >Monaco</option>
+		<option value="MN" >Mongolia</option>
+		<option value="MS" >Montserrat</option>
+		<option value="MA" >Morocco</option>
+		<option value="MZ" >Mozambique</option>
+		<option value="MM" >Myanmar</option>
+		<option value="NA" >Namibia</option>
+		<option value="NR" >Nauru</option>
+		<option value="NP" >Nepal</option>
+		<option value="NL" >Netherlands</option>
+		<option value="AN" >Netherlands Antilles</option>
+		<option value="NC" >New Caledonia</option>
+		<option value="NZ" >New Zealand</option>
+		<option value="NI" >Nicaragua</option>
+		<option value="NE" >Niger</option>
+		<option value="NG" >Nigeria</option>
+		<option value="NU" >Niue</option>
+		<option value="NF" >Norfork Island</option>
+		<option value="MP" >Northern Mariana Islands</option>
+		<option value="NO" >Norway</option>
+		<option value="OM" >Oman</option>
+		<option value="PK" >Pakistan</option>
+		<option value="PW" >Palau</option>
+		<option value="PA" >Panama</option>
+		<option value="PG" >Papua New Guinea</option>
+		<option value="PY" >Paraguay</option>
+		<option value="PE" >Peru</option>
+		<option value="PH" >Philippines</option>
+		<option value="PN" >Pitcairn</option>
+		<option value="PL" >Poland</option>
+		<option value="PT" >Portugal</option>
+		<option value="PR" >Puerto Rico</option>
+		<option value="QA" >Qatar</option>
+		<option value="RE" >Reunion</option>
+		<option value="RO" >Romania</option>
+		<option value="RU" >Russian Federation</option>
+		<option value="RW" >Rwanda</option>
+		<option value="KN" >Saint Kitts and Nevis</option>
+		<option value="LC" >Saint Lucia</option>
+		<option value="VC" >Saint Vincent and the Grenadines</option>
+		<option value="WS" >Samoa</option>
+		<option value="SM" >San Marino</option>
+		<option value="ST" >Sao Tome and Principe</option>
+		<option value="SA" >Saudi Arabia</option>
+		<option value="SN" >Senegal</option>
+		<option value="SC" >Seychelles</option>
+		<option value="SL" >Sierra Leone</option>
+		<option value="SG" >Singapore</option>
+		<option value="SK" >Slovakia</option>
+		<option value="SI" >Slovenia</option>
+		<option value="SB" >Solomon Islands</option>
+		<option value="SO" >Somalia</option>
+		<option value="ZA" >South Africa</option>
+		<option value="GS" >South Georgia South Sandwich Islands</option>
+		<option value="ES" >Spain</option>
+		<option value="LK" >Sri Lanka</option>
+		<option value="SH" >St. Helena</option>
+		<option value="PM" >St. Pierre and Miquelon</option>
+		<option value="SD" >Sudan</option>
+		<option value="SR" >Suriname</option>
+		<option value="SJ" >Svalbarn and Jan Mayen Islands</option>
+		<option value="SZ" >Swaziland</option>
+		<option value="SE" >Sweden</option>
+		<option value="CH" >Switzerland</option>
+		<option value="SY" >Syrian Arab Republic</option>
+		<option value="TW" >Taiwan</option>
+		<option value="TJ" >Tajikistan</option>
+		<option value="TZ" >Tanzania, United Republic of</option>
+		<option value="TH" >Thailand</option>
+		<option value="TG" >Togo</option>
+		<option value="TK" >Tokelau</option>
+		<option value="TO" >Tonga</option>
+		<option value="TT" >Trinidad and Tobago</option>
+		<option value="TN" >Tunisia</option>
+		<option value="TR" >Turkey</option>
+		<option value="TM" >Turkmenistan</option>
+		<option value="TC" >Turks and Caicos Islands</option>
+		<option value="TV" >Tuvalu</option>
+		<option value="UG" >Uganda</option>
+		<option value="UA" >Ukraine</option>
+		<option value="AE" >United Arab Emirates</option>
+		<option value="GB" >United Kingdom</option>
+		<option value="UM" >United States minor outlying islands</option>
+		<option value="UY" >Uruguay</option>
+		<option value="UZ" >Uzbekistan</option>
+		<option value="VU" >Vanuatu</option>
+		<option value="VA" >Vatican City State</option>
+		<option value="VE" >Venezuela</option>
+		<option value="VN" >Vietnam</option>
+		<option value="VG" >Virigan Islands (British)</option>
+		<option value="VI" >Virgin Islands (U.S.)</option>
+		<option value="WF" >Wallis and Futuna Islands</option>
+		<option value="EH" >Western Sahara</option>
+		<option value="YE" >Yemen</option>
+		<option value="YU" >Yugoslavia</option>
+		<option value="ZR" >Zaire</option>
+		<option value="ZM" >Zambia</option>
+		<option value="ZW" >Zimbabwe</option>
+	</select>				<input type="hidden" name="fieldid[7]" value="21">
+				<input type="hidden" name="fieldname[7]" value="zipcode">
+				<input type="hidden" name="tablename[7]" value="company_data">
+				<input type="hidden" name="default[7]" value="Postal Code">
+				<input type="hidden" name="required[7]" value="n">
+									<input type="text" name="compdata[7]" size="30" value="Postal Code" maxlength="12" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Postal Code","#BDBDBD");' onblur='blurField(this,"Postal Code","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[8]" value="2">
+				<input type="hidden" name="fieldname[8]" value="website">
+				<input type="hidden" name="tablename[8]" value="company_data">
+				<input type="hidden" name="default[8]" value="Website URL">
+				<input type="hidden" name="required[8]" value="n">
+									<input type="text" name="compdata[8]" size="30" value="Website URL" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Website URL","#BDBDBD");' onblur='blurField(this,"Website URL","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[9]" value="22">
+				<input type="hidden" name="fieldname[9]" value="phone">
+				<input type="hidden" name="tablename[9]" value="company_data">
+				<input type="hidden" name="default[9]" value="Phone">
+				<input type="hidden" name="required[9]" value="n">
+									<input type="text" name="compdata[9]" size="30" value="Phone" maxlength="20" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Phone","#BDBDBD");' onblur='blurField(this,"Phone","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[10]" value="28">
+				<input type="hidden" name="fieldname[10]" value="skype">
+				<input type="hidden" name="tablename[10]" value="company_data">
+				<input type="hidden" name="default[10]" value="Skype Name">
+				<input type="hidden" name="required[10]" value="n">
+									<input type="text" name="compdata[10]" size="30" value="Skype Name" maxlength="30" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Skype Name","#BDBDBD");' onblur='blurField(this,"Skype Name","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[11]" value="3">
+				<input type="hidden" name="fieldname[11]" value="servicetype">
+				<input type="hidden" name="tablename[11]" value="company_data">
+				<input type="hidden" name="default[11]" value="Service Type">
+				<input type="hidden" name="required[11]" value="y">
+				<select name="compdata[11]" class="field" style='color:#BDBDBD;;height:30px;width:211px;margin-top:5px;padding-left:2px;' onfocus='focusField(this,"Service Type","#BDBDBD");' onblur='blurField(this,"Service Type","#BDBDBD");'>
+<option value="Service Type">Service Type</option>
+		<option value="1" >Ad Agency</option>
+				<option value="2" >Blogging</option>
+				<option value="34" >Business Services</option>
+				<option value="18" >Communications</option>
+				<option value="4" >Consulting</option>
+				<option value="5" >Expert</option>
+				<option value="31" >Graphic Design</option>
+				<option value="22" >ISP</option>
+				<option value="27" >Legal</option>
+				<option value="16" >Logo Design</option>
+				<option value="15" >Marketing</option>
+				<option value="30" >News</option>
+				<option value="6" >Podcasting</option>
+				<option value="23" >Programming</option>
+				<option value="7" >Public Relations</option>
+				<option value="24" >Sales</option>
+				<option value="8" >Seminar</option>
+				<option value="9" >SEO</option>
+				<option value="28" >Social Media Author</option>
+				<option value="3" >Social Media Club</option>
+				<option value="33" >Social Media Management</option>
+				<option value="21" >Software Engineering</option>
+				<option value="26" >Speaking</option>
+				<option value="32" >Staffing</option>
+				<option value="25" >System Administration</option>
+				<option value="10" >Tech Support</option>
+				<option value="19" >Video Production</option>
+				<option value="11" >Web Design</option>
+				<option value="17" >Web Development</option>
+				<option value="20" >Web Hosting</option>
+				<option value="29" >Website Management</option>
+				<option value="12" >Workshop</option>
+				<option value="13" >Writing Services</option>
+			<option value="14" >Other</option>
+</select>				<input type="hidden" name="fieldid[12]" value="24">
+				<input type="hidden" name="fieldname[12]" value="servicetype2">
+				<input type="hidden" name="tablename[12]" value="company_data">
+				<input type="hidden" name="default[12]" value="Service Type">
+				<input type="hidden" name="required[12]" value="y">
+				<select name="compdata[12]" class="field" style='color:#BDBDBD;;height:30px;width:211px;margin-top:5px;padding-left:2px;' onfocus='focusField(this,"Service Type","#BDBDBD");' onblur='blurField(this,"Service Type","#BDBDBD");'>
+<option value="Service Type">Service Type</option>
+		<option value="1" >Ad Agency</option>
+				<option value="2" >Blogging</option>
+				<option value="34" >Business Services</option>
+				<option value="18" >Communications</option>
+				<option value="4" >Consulting</option>
+				<option value="5" >Expert</option>
+				<option value="31" >Graphic Design</option>
+				<option value="22" >ISP</option>
+				<option value="27" >Legal</option>
+				<option value="16" >Logo Design</option>
+				<option value="15" >Marketing</option>
+				<option value="30" >News</option>
+				<option value="6" >Podcasting</option>
+				<option value="23" >Programming</option>
+				<option value="7" >Public Relations</option>
+				<option value="24" >Sales</option>
+				<option value="8" >Seminar</option>
+				<option value="9" >SEO</option>
+				<option value="28" >Social Media Author</option>
+				<option value="3" >Social Media Club</option>
+				<option value="33" >Social Media Management</option>
+				<option value="21" >Software Engineering</option>
+				<option value="26" >Speaking</option>
+				<option value="32" >Staffing</option>
+				<option value="25" >System Administration</option>
+				<option value="10" >Tech Support</option>
+				<option value="19" >Video Production</option>
+				<option value="11" >Web Design</option>
+				<option value="17" >Web Development</option>
+				<option value="20" >Web Hosting</option>
+				<option value="29" >Website Management</option>
+				<option value="12" >Workshop</option>
+				<option value="13" >Writing Services</option>
+			<option value="14" >Other</option>
+</select>				<input type="hidden" name="fieldid[13]" value="25">
+				<input type="hidden" name="fieldname[13]" value="servicetype3">
+				<input type="hidden" name="tablename[13]" value="company_data">
+				<input type="hidden" name="default[13]" value="Service Type">
+				<input type="hidden" name="required[13]" value="y">
+				<select name="compdata[13]" class="field" style='color:#BDBDBD;;height:30px;width:211px;margin-top:5px;padding-left:2px;' onfocus='focusField(this,"Service Type","#BDBDBD");' onblur='blurField(this,"Service Type","#BDBDBD");'>
+<option value="Service Type">Service Type</option>
+		<option value="1" >Ad Agency</option>
+				<option value="2" >Blogging</option>
+				<option value="34" >Business Services</option>
+				<option value="18" >Communications</option>
+				<option value="4" >Consulting</option>
+				<option value="5" >Expert</option>
+				<option value="31" >Graphic Design</option>
+				<option value="22" >ISP</option>
+				<option value="27" >Legal</option>
+				<option value="16" >Logo Design</option>
+				<option value="15" >Marketing</option>
+				<option value="30" >News</option>
+				<option value="6" >Podcasting</option>
+				<option value="23" >Programming</option>
+				<option value="7" >Public Relations</option>
+				<option value="24" >Sales</option>
+				<option value="8" >Seminar</option>
+				<option value="9" >SEO</option>
+				<option value="28" >Social Media Author</option>
+				<option value="3" >Social Media Club</option>
+				<option value="33" >Social Media Management</option>
+				<option value="21" >Software Engineering</option>
+				<option value="26" >Speaking</option>
+				<option value="32" >Staffing</option>
+				<option value="25" >System Administration</option>
+				<option value="10" >Tech Support</option>
+				<option value="19" >Video Production</option>
+				<option value="11" >Web Design</option>
+				<option value="17" >Web Development</option>
+				<option value="20" >Web Hosting</option>
+				<option value="29" >Website Management</option>
+				<option value="12" >Workshop</option>
+				<option value="13" >Writing Services</option>
+			<option value="14" >Other</option>
+</select>				<input type="hidden" name="fieldid[14]" value="4">
+				<input type="hidden" name="fieldname[14]" value="description">
+				<input type="hidden" name="tablename[14]" value="company_data">
+				<input type="hidden" name="default[14]" value="Description">
+				<input type="hidden" name="required[14]" value="n">
+									<textarea name="compdata[14]" cols="25" rows="3" maxlength="2500" class="field" style='color:#BDBDBD;;height:80px;margin-top:5px;padding-left:5px;font-family:Arial,Sans-serif;font-size:13px;' onfocus='focusField(this,"Description","#BDBDBD");' onblur='blurField(this,"Description","#BDBDBD");'>Description</textarea>
+									<input type="hidden" name="fieldid[15]" value="5">
+				<input type="hidden" name="fieldname[15]" value="keywords">
+				<input type="hidden" name="tablename[15]" value="company_data">
+				<input type="hidden" name="default[15]" value="Keywords">
+				<input type="hidden" name="required[15]" value="n">
+									<textarea name="compdata[15]" cols="25" rows="3" maxlength="1000" class="field" style='color:#BDBDBD;;height:80px;margin-top:5px;padding-left:5px;font-family:Arial,Sans-serif;font-size:13px;' onfocus='focusField(this,"Keywords","#BDBDBD");' onblur='blurField(this,"Keywords","#BDBDBD");'>Keywords</textarea>
+									<input type="hidden" name="fieldid[16]" value="6">
+				<input type="hidden" name="fieldname[16]" value="email">
+				<input type="hidden" name="tablename[16]" value="company_data">
+				<input type="hidden" name="default[16]" value="Email Address">
+				<input type="hidden" name="required[16]" value="y">
+									<input type="text" name="compdata[16]" size="30" value="Email Address" maxlength="50" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Email Address","#BDBDBD");' onblur='blurField(this,"Email Address","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[17]" value="31">
+				<input type="hidden" name="fieldname[17]" value="verifyemail">
+				<input type="hidden" name="tablename[17]" value="">
+				<input type="hidden" name="default[17]" value="Verify Email Address">
+				<input type="hidden" name="required[17]" value="y">
+									<input type="text" name="compdata[17]" size="30" value="Verify Email Address" maxlength="50" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"Verify Email Address","#BDBDBD");' onblur='blurField(this,"Verify Email Address","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[18]" value="8">
+				<input type="hidden" name="fieldname[18]" value="facebook">
+				<input type="hidden" name="tablename[18]" value="company_follow">
+				<input type="hidden" name="default[18]" value="http://facebook.com/yourURLhere">
+				<input type="hidden" name="required[18]" value="n">
+									<input type="text" name="compdata[18]" size="30" value="http://facebook.com/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://facebook.com/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://facebook.com/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[19]" value="9">
+				<input type="hidden" name="fieldname[19]" value="twitter">
+				<input type="hidden" name="tablename[19]" value="company_follow">
+				<input type="hidden" name="default[19]" value="http://twitter.com/yourURLhere">
+				<input type="hidden" name="required[19]" value="n">
+									<input type="text" name="compdata[19]" size="30" value="http://twitter.com/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://twitter.com/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://twitter.com/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[20]" value="7">
+				<input type="hidden" name="fieldname[20]" value="znznz">
+				<input type="hidden" name="tablename[20]" value="company_follow">
+				<input type="hidden" name="default[20]" value="ZNZNZ (Beta test)">
+				<input type="hidden" name="required[20]" value="n">
+									<input type="text" name="compdata[20]" size="30" value="ZNZNZ (Beta test)" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"ZNZNZ (Beta test)","#BDBDBD");' onblur='blurField(this,"ZNZNZ (Beta test)","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[21]" value="10">
+				<input type="hidden" name="fieldname[21]" value="linkedin">
+				<input type="hidden" name="tablename[21]" value="company_follow">
+				<input type="hidden" name="default[21]" value="http://linkedin/yourURLhere">
+				<input type="hidden" name="required[21]" value="n">
+									<input type="text" name="compdata[21]" size="30" value="http://linkedin/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://linkedin/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://linkedin/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[22]" value="33">
+				<input type="hidden" name="fieldname[22]" value="googleplus">
+				<input type="hidden" name="tablename[22]" value="company_follow">
+				<input type="hidden" name="default[22]" value="http://plus.google.com/yourURLhere">
+				<input type="hidden" name="required[22]" value="n">
+									<input type="text" name="compdata[22]" size="30" value="http://plus.google.com/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://plus.google.com/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://plus.google.com/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[23]" value="11">
+				<input type="hidden" name="fieldname[23]" value="flickr">
+				<input type="hidden" name="tablename[23]" value="company_follow">
+				<input type="hidden" name="default[23]" value="http://flickr.com/yourURLhere">
+				<input type="hidden" name="required[23]" value="n">
+									<input type="text" name="compdata[23]" size="30" value="http://flickr.com/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://flickr.com/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://flickr.com/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[24]" value="12">
+				<input type="hidden" name="fieldname[24]" value="youtube">
+				<input type="hidden" name="tablename[24]" value="company_follow">
+				<input type="hidden" name="default[24]" value="http://youtube.com/yourURLhere">
+				<input type="hidden" name="required[24]" value="n">
+									<input type="text" name="compdata[24]" size="30" value="http://youtube.com/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://youtube.com/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://youtube.com/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[25]" value="13">
+				<input type="hidden" name="fieldname[25]" value="blog">
+				<input type="hidden" name="tablename[25]" value="company_follow">
+				<input type="hidden" name="default[25]" value="http://blog.com/yourURLhere">
+				<input type="hidden" name="required[25]" value="n">
+									<input type="text" name="compdata[25]" size="30" value="http://blog.com/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://blog.com/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://blog.com/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[26]" value="14">
+				<input type="hidden" name="fieldname[26]" value="podcast">
+				<input type="hidden" name="tablename[26]" value="company_follow">
+				<input type="hidden" name="default[26]" value="http://podcast.com/yourURLhere">
+				<input type="hidden" name="required[26]" value="n">
+									<input type="text" name="compdata[26]" size="30" value="http://podcast.com/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://podcast.com/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://podcast.com/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[27]" value="15">
+				<input type="hidden" name="fieldname[27]" value="rssfeed">
+				<input type="hidden" name="tablename[27]" value="company_follow">
+				<input type="hidden" name="default[27]" value="http://rssfeed.com/yourURLhere">
+				<input type="hidden" name="required[27]" value="n">
+									<input type="text" name="compdata[27]" size="30" value="http://rssfeed.com/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://rssfeed.com/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://rssfeed.com/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[28]" value="16">
+				<input type="hidden" name="fieldname[28]" value="foursquare">
+				<input type="hidden" name="tablename[28]" value="company_follow">
+				<input type="hidden" name="default[28]" value="http://foursquare.com/yourURLhere">
+				<input type="hidden" name="required[28]" value="n">
+									<input type="text" name="compdata[28]" size="30" value="http://foursquare.com/yourURLhere" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://foursquare.com/yourURLhere","#BDBDBD");' onblur='blurField(this,"http://foursquare.com/yourURLhere","#BDBDBD");'><br>
+									<input type="hidden" name="fieldid[29]" value="34">
+				<input type="hidden" name="fieldname[29]" value="tumblr">
+				<input type="hidden" name="tablename[29]" value="company_follow">
+				<input type="hidden" name="default[29]" value="http://{YourName}.tumblr.com">
+				<input type="hidden" name="required[29]" value="n">
+									<input type="text" name="compdata[29]" size="30" value="http://{YourName}.tumblr.com" maxlength="100" class="field" style='color:#BDBDBD;;height:30px;margin-top:5px;padding-left:5px;' onfocus='focusField(this,"http://{YourName}.tumblr.com","#BDBDBD");' onblur='blurField(this,"http://{YourName}.tumblr.com","#BDBDBD");'><br>
+								<input type="hidden" name="submittime" value="">
+			<input type="hidden" name="formcompname" value="">
+			<input type="hidden" name="answer1" value="6ea9ab1baa0efb9e19094440c317e21b">
+			<br>Upload Logo (size limit: 350 KB)<br>
+			<input type="file" name="image" size="18"><br><br>
+							Answer the following question, then click "Submit"<br>
+				<div style='margin-top:5px;padding-left:5px;font-family:Arial,Sans-serif;font-size:13px;'>What is the 1st number in the list twenty nine, 25 and 39?</div>
+				<input type="text" name="captcha" size="30" class="field" style=';height:30px;margin-top:5px;padding-left:5px;'><br>
+							<input type="submit" name="insertcompany" value="Submit" style='margin-top:5px;margin-bottom:5px;'>
+			</form>
+		</td>
+	</tr>
+</table>
+<br>
+			<div id="confbanner2" style="padding-left:30px;"><a href="http://www.whitepapersource.com/cmd.php?Clk=4389246"><img class="alignnone" title="Logo" src="http://www.socialmediaexaminer.com/images/fbss11-logo.png" alt="" width="200" height="134" /></a></div>
+			</td>
+		</tr>
+	</table>
+	<span class="fontstyle" style='font-size:9px;'>&copy; 2012, iGlobal, Inc.</span>
+	<span id="twitterhtml[0]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/JdfwyC' class='twitter-share-button' data-text='Recommended - Need A Producer, LLC - #Video #Pro #Web #Design #SMManagement - @HuseyinTheBrain Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/Need-A-Producer-LLC'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><span id="twitterhtml[1]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/K2juxn' class='twitter-share-button' data-text='Recommended - Write Web Marketing - #Marketing #Consult #SEO - @WriteWeb Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/Write-Web-Marketing'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><span id="twitterhtml[2]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/JAxakv' class='twitter-share-button' data-text='Recommended - Media Techs - #Author #SEO #SMManagement - @ Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/Media-Techs'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><span id="twitterhtml[3]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/JuSuGT' class='twitter-share-button' data-text='Recommended - best recetas - #Marketing #Blog #SEO - @bestrecetas Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/best-recetas'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><span id="twitterhtml[4]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/Hlb6Fk' class='twitter-share-button' data-text='Recommended - Socigen.com - #SMManagement #SEO #SM #Club - @socigen Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/Socigencom'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><span id="twitterhtml[5]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/H7Jk0t' class='twitter-share-button' data-text='Recommended - Dotnet Lounge - #BusinessServices #WebMaster - @SConnectForNet Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/Dotnet-Lounge'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><span id="twitterhtml[6]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/Hvtueb' class='twitter-share-button' data-text='Recommended - iSocialDesign.com - #SEO #Web #Design #SMManagement - @isocialdesign Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/iSocialDesigncom'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><span id="twitterhtml[7]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/HmR5O0' class='twitter-share-button' data-text='Recommended - Social Media Job Site - #Staffing - @ Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/Social-Media-Job-Site'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><span id="twitterhtml[8]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/FQfe1v' class='twitter-share-button' data-text='Recommended - Command Partners - #SMManagement #PR #Marketing - @commandpartners Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/Command-Partners'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><span id="twitterhtml[9]" style='display:none;'><a href='http://twitter.com/share?url=http://bit.ly/ytb275' class='twitter-share-button' data-text='Recommended - Postano - #Marketing #SEO #SMManagement - @ilpostano Info here: ' data-count='horizontal' data-counturl='http://SocialMediaDirectory.org/Postano'>Tweet</a><script type='text/javascript' src='http://platform.twitter.com/widgets.js'></script></span><script language="javascript">
+i = 0;
+while (document.getElementById("twitterhtml[" + i + "]")) {
+	html = document.getElementById("twitterhtml[" + i + "]").innerHTML;
+	document.getElementById("twittercode[" + i + "]").innerHTML = html;
+	document.getElementById("twitterhtml[" + i + "]").innerHTML = "";
+	i++;
+}
+</script>
+</body>
+</html>
