@@ -15,6 +15,8 @@ class GoogleMap:
             response = json.loads(response.text)
             if response['status'] == 'ZERO_RESULTS':
                 result = False
+            elif response['partial_match'] == True:
+                result = False
             else:
                 result = response['results'][0]['formatted_address']
                 
