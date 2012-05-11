@@ -88,17 +88,6 @@ class ContactMixin():
         phone_tags = self.soup.find_all(text=find_phones)
         return (phones, phone_tags)
 
-        address = []
-        def test(soup, depth):
-            if hasattr(soup, 'children'):
-                for children in soup.children:
-                    test(children, depth + 1)
-            elif soup.string.strip(' \n\t'):
-                address_temp = address_re.match(soup.string.strip(' \n\t'))
-                if address_temp and len(address_temp.groups()):                
-                    address.append(soup)
-
-        test(self.soup.find('html'), 0)
 
     def find_urls(self):
         url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
@@ -130,6 +119,22 @@ class ContactMixin():
 
     def build_contact(self, parent, list_interesting_children):
         pass
+    
+    def find_addresses(self):
+        #(([a-zA-Z]{2}),?\s+([0-9]{5})(-[0-9]{4}))
+        address_re = re.compile('([0-9]{1,5})\s+(.*),?\s+(.*)')
+        address = []
+        def test(soup, depth):
+            if hasattr(soup, 'children'):
+                for children in soup.children:
+                    test(children, depth + 1)
+            elif soup.string.strip(' \n\t'):
+                address_temp = address_re.match(soup.string.strip(' \n\t'))
+                if address_temp and len(address_temp.groups()):
+                    address.append(soup)
+
+        test(self.soup.find('html'), 0)
+        return address
 
     def get_contact_content(self):
 
@@ -138,6 +143,7 @@ class ContactMixin():
         phones, phone_tags = self.find_phones()
         urls, url_tags = self.find_urls()
         interesting_tags = list(set(email_tags + phone_tags + url_tags))
+        address = self.find_addresses()
 
         self.rings_of_closeness(interesting_tags[0], interesting_tags)
 
