@@ -122,7 +122,7 @@ class ContactMixin():
         emails, email_tags = self.find_emails()
         phones, phone_tags = self.find_phones()
         urls, url_tags = self.find_urls()
-        interesting_tags = list(set(email_tags + phone_tags))
+        interesting_tags = list(set(email_tags + phone_tags + url_tags))
 
         self.rings_of_closeness(interesting_tags[0], interesting_tags)
 
