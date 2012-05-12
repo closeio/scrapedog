@@ -152,11 +152,13 @@ class ContactMixin():
         returns = {0:[tag1, tag2], 3:[tag3, tag4, tag5], 7: [tag6]}
 
     def find_addresses(self):
-        citystate_re = re.compile('([a-zA-Z]{2}),?\s+([0-9]{5})')
+        citystate_re = re.compile('(.*)([a-zA-Z]{2}),?\s+([0-9]{5})')
         address_re = re.compile('([0-9]{1,5})\s+(.*),?\s+(.*)')
         gm = GoogleMap()
-        address = {}
-        full_address = []
+        address = []
+        full_address = {}
+        full_address['soup'] = []
+        full_address['fulladdress'] = []
         def test(soup, depth):
             if hasattr(soup, 'children'):
                 for children in soup.children:
@@ -164,24 +166,55 @@ class ContactMixin():
             elif soup.string.strip(' \n\t'):
                 address_temp = address_re.match(soup.string.strip(' \n\t'))
                 if address_temp and len(address_temp.groups()):
+                    print type(gm.check_address(soup.string))
                     if gm.check_address(soup.string):
-                        full_address.append(soup)
+                        full_address['soup'].append(soup)
+                        full_address['fulladdress'].append(gm.check_address(soup.string))
                     else:
-                        if address.has_key(depth):
-                            address[depth].append(soup)
-                        else:
-                            address[depth] = [soup]
-                            
-                        citystate_temp = citystate_re.match(soup.string.strip(' \n\t'))                        
-                        if citystate_temp and len(citystate_temp.groups()):
-                            if address.has_key(depth):
-                                address[depth].append(soup)
-                            else:
-                                address[depth] = [soup]
-                                
-        print address
+                        address.append(soup)
 
         test(self.soup.find('html'), 0)
+        
+        def combine_address(soup):
+            str = ''
+            if hasattr(soup, 'children'):
+                for children in soup.children:
+                    str += combine_address(children)
+            else:
+                str += soup
+                
+            return str
+        
+        def combine_siblings(soup):
+            found = False
+            addy = combine_address(soup)
+            
+            if hasattr(soup, 'next_siblings') and soup.next_siblings:
+                for sibling in soup.next_siblings:
+                    addy += sibling.string
+                    if gm.check_address(addy):
+                        full_address['soup'].append(soup)
+                        full_address['fulladdress'].append(gm.check_address(addy))
+                        found = True
+                        break
+            return found
+                
+        for soup in address:
+            addy = combine_address(soup.parent)
+            if gm.check_address(addy):
+                full_address['soup'].append(soup)
+                full_address['fulladdress'].append(gm.check_address(addy))
+            else:
+                addy = combine_address(soup)
+                if gm.check_address(addy):
+                    full_address['soup'].append(soup.parent.parent)
+                    full_address['fulladdress'].append(gm.check_address(addy))
+                else:
+                    if not combine_siblings(soup):
+                        if not combine_siblings(soup.parent):
+                            combine_siblings(soup.parent.parent)
+            
+        
         return full_address
 
     def build_contact(self, parent, list_interesting_children=None):
@@ -196,15 +229,14 @@ class ContactMixin():
             'urls': urls,
             'url_tags': [unicode(x.parent) for x in url_tags] or [],
         }
-        #'addresses': self.find_addresses(parent)
-
+               
     def get_contact_content(self):
 
         emails, email_tags = self.find_emails()
         phones, phone_tags = self.find_phones()
         urls, url_tags = self.find_urls()
         interesting_tags = list(set(email_tags + phone_tags + url_tags))
-        #address = self.find_addresses()
+        address = self.find_addresses()
 
         print len(interesting_tags), 'interesting tags'
 
@@ -212,26 +244,26 @@ class ContactMixin():
         #self.rings_of_closeness(interesting_tags[0], interesting_tags)
 
         root = []
-        group = sorted(group_by_common_parent(interesting_tags).iteritems())
-
-        print len(group), 'group'
-
-
-        for parent, children in group:
-            """
-            print ''
-            print ''
-            print print_el(parent), len(children)
-            """
-            contacts = []
-            for contact in get_all_children(parent):
-                contact = self.build_contact(contact, children)
-                contacts.append(contact)
-            root.append({print_el(parent): contacts})
-
-        return {
-            'root': root or [],
-        }
+#        group = sorted(group_by_common_parent(interesting_tags).iteritems())
+#
+#        print len(group), 'group'
+#
+#
+#        for parent, children in group:
+#            """
+#            print ''
+#            print ''
+#            print print_el(parent), len(children)
+#            """
+#            contacts = []
+#            for contact in get_all_children(parent):
+#                contact = self.build_contact(contact, children)
+#                contacts.append(contact)
+#            root.append({print_el(parent): contacts})
+#
+#        return {
+#            'root': root or [],
+#        }
             #'interesting_tags': [unicode(x.parent) for x in interesting_tags] or [],
         return {
             'emails': emails,
@@ -240,7 +272,7 @@ class ContactMixin():
             'phone_tags': [unicode(x.parent) for x in phone_tags] or [],
             'urls': urls,
             'url_tags': [unicode(x.parent) for x in url_tags] or [],
-            'address' : address
+            'address' : address['fulladdress']
         }
 
 

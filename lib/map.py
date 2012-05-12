@@ -28,7 +28,7 @@ class GoogleMap:
                     if i in _address2:
                         count += 1
                 
-                if float(count) / max(len(_address), len(_address2)) > 0.5:
+                if float(count) / max(len(_address), len(_address2)) > 0.7:
                     result = formatted
                 else:
                     result = False
