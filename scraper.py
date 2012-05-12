@@ -27,10 +27,10 @@ class BasicMixin():
 parents_cache = {}
 def get_all_parents(el):
     # from root down to parent of el
-    if parents_cache.get(el):
-        return parents_cache.get(el)
-    els = list(reversed(list(el.parents)))
-    parents_cache[el] = els
+    els = parents_cache.get(el)
+    if not els:
+        els = list(reversed(list(el.parents)))
+        parents_cache[el] = els
     return els
 
 def get_all_children(el):
