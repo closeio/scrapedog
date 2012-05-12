@@ -21,7 +21,7 @@ class GoogleMap:
                 _address = set(address.replace('\n', ' ').replace('\t', ' ').replace(',', '').split(' '))
                 _address2 = set(formatted.replace('\n', ' ').replace('\t', ' ').replace(',', '').split(' '))
                 
-                if float(len(_address & _address2)) / max(len(_address), len(_address2)) > 0.5:
+                if float(len(_address & _address2)) / max(len(_address), len(_address2)) > 0.7:
                     result = formatted
                 else:
                     result = False
@@ -34,5 +34,5 @@ class GoogleMap:
         
         
 # example:
-gm = GoogleMap()
-print gm.check_address('11231001 S Main St\nMilpitas, CA')
+#gm = GoogleMap()
+#print gm.check_address('11231001 S Main St\nMilpitas, CA')
