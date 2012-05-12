@@ -244,27 +244,27 @@ class ContactMixin():
         #self.rings_of_closeness(interesting_tags[0], interesting_tags)
 
         root = []
-#        group = sorted(group_by_common_parent(interesting_tags).iteritems())
-#
-#        print len(group), 'group'
-#
-#
-#        for parent, children in group:
-#            """
-#            print ''
-#            print ''
-#            print print_el(parent), len(children)
-#            """
-#            contacts = []
-#            for contact in get_all_children(parent):
-#                contact = self.build_contact(contact, children)
-#                contacts.append(contact)
-#            root.append({print_el(parent): contacts})
-#
-#        return {
-#            'root': root or [],
-#        }
-            #'interesting_tags': [unicode(x.parent) for x in interesting_tags] or [],
+        group = sorted(group_by_common_parent(interesting_tags).iteritems())
+
+        print len(group), 'group'
+
+
+        for parent, children in group:
+            """
+            print ''
+            print ''
+            print print_el(parent), len(children)
+            """
+            contacts = []
+            for contact in get_all_children(parent):
+                contact = self.build_contact(contact, children)
+                contacts.append(contact)
+            root.append({print_el(parent): contacts})
+
+        return {
+            'root': root or [],
+        }
+#            'interesting_tags': [unicode(x.parent) for x in interesting_tags] or [],
         return {
             'emails': emails,
             'email_tags': [unicode(x.parent) for x in email_tags] or [],
